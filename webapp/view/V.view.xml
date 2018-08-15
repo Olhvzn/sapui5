@@ -24,6 +24,7 @@
 
     <VBox>
 		<CheckBox text="Option a" />
+		<CheckBox text="Option a1" />
 		<CheckBox text="Option b" />
 		<CheckBox text="Option c" />
 		<CheckBox text="Option d" />
