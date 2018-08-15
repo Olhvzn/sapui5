@@ -13,6 +13,7 @@
        class="sapUiSmallMarginEnd"/>
 
 		<Slider value="30" width="90%" class="sapUiSmallMarginBottom" />
+		<Slider value="30" width="90%" class="sapUiSmallMarginBottom" />
 		<Slider value="27" width="10em" class="sapUiSmallMarginBottom" />
 		<Slider value="40" width="15em" class="sapUiSmallMarginBottom" />
 		<Slider value="5" width="66%"
