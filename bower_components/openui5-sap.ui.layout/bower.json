@@ -1,0 +1,21 @@
+{
+  "name": "openui5-sap.ui.layout",
+  "description": "OpenUI5 UI Library sap.ui.layout",
+  "version": "1.56.5",
+  "license": "Apache-2.0",
+  "ignore": [],
+  "keywords": [
+    "openui5"
+  ],
+  "authors": [
+    "SAP SE <*@sap.com>"
+  ],
+  "homepage": "http://openui5.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/openui5.git"
+  },
+  "dependencies": {
+    "openui5-sap.ui.core": "openui5/packaged-sap.ui.core#1.56.5"
+  }
+}

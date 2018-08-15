@@ -1,0 +1,91 @@
+<mvc:View
+	xmlns:l="sap.ui.layout"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<l:VerticalLayout
+		width="100%" >
+		<l:content>
+
+			<Panel>
+				<headerToolbar>
+					<Toolbar>
+						<Title level="H2" text="Reverse, horizontal" />
+					</Toolbar>
+				</headerToolbar>
+				<FlexBox
+					direction="RowReverse"
+					alignItems="Start">
+					<items>
+						<Button text="1" type="Emphasized" />
+						<Button text="2" type="Reject" />
+						<Button text="3" type="Accept" />
+					</items>
+				</FlexBox>
+			</Panel>
+
+			<Panel>
+				<headerToolbar>
+					<Toolbar>
+						<Title level="H2" text="Top to bottom, vertical" />
+					</Toolbar>
+				</headerToolbar>
+				<FlexBox
+					direction="Column"
+					alignItems="Start">
+					<items>
+						<Button text="1" type="Emphasized" />
+						<Button text="2" type="Reject" />
+						<Button text="3" type="Accept" />
+					</items>
+				</FlexBox>
+			</Panel>
+
+			<Panel>
+				<headerToolbar>
+					<Toolbar>
+						<Title level="H2" text="Bottom to top, reverse vertical" />
+					</Toolbar>
+				</headerToolbar>
+				<FlexBox
+					direction="ColumnReverse"
+					alignItems="Start">
+					<items>
+						<Button text="1" type="Emphasized" />
+						<Button text="2" type="Reject" />
+						<Button text="3" type="Accept" />
+					</items>
+				</FlexBox>
+			</Panel>
+
+			<Panel>
+				<headerToolbar>
+					<Toolbar>
+						<Title level="H2" text="Arbitrary flex item order" />
+					</Toolbar>
+				</headerToolbar>
+				<FlexBox
+					alignItems="Start">
+					<items>
+						<Button text="1" width="100%" type="Emphasized" >
+							<layoutData>
+								<FlexItemData order="2" />
+							</layoutData>
+						</Button>
+						<Button text="2" width="100%" type="Reject" >
+							<layoutData>
+								<FlexItemData order="3" />
+							</layoutData>
+						</Button>
+						<Button text="3" width="100%" type="Accept" >
+							<layoutData>
+								<FlexItemData order="1" />
+							</layoutData>
+						</Button>
+					</items>
+				</FlexBox>
+			</Panel>
+
+		</l:content>
+	</l:VerticalLayout>
+</mvc:View>

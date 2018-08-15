@@ -1,0 +1,1234 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>MultiInput - sap.m</title>
+
+		<script src="shared-config.js"></script>
+		<script src="../../../resources/sap-ui-core.js"
+			id="sap-ui-bootstrap"
+			data-sap-ui-libs="sap.m, sap.ui.layout">
+		</script>
+
+		<script>
+
+		jQuery.sap.require("sap.m.MessageBox");
+		jQuery.sap.require("sap.m.MultiInput");
+		jQuery.sap.require("sap.m.MultiComboBox");
+		jQuery.sap.require("sap.m.Token");
+		jQuery.sap.require("sap.m.Table");
+
+		//*******************************
+ 		var oEventList = new sap.m.List();
+		var fEventWriter = function(eventArgs){
+			var type = eventArgs.getParameter("type");
+			var item = null;
+			if (type === "tokensChanged"){
+				item = new sap.m.StandardListItem({title: "type of TokenChange event: " + type + " added: " + eventArgs.getParameter("addedTokens").length + " removed: " + eventArgs.getParameter("removedTokens").length});
+			} else {
+				item = new sap.m.StandardListItem({title: "type of TokenChange event: " + type});
+			}
+			oEventList.addItem(item);
+		};
+
+		var aDialogContent = [
+			new sap.m.Label({id:"mil1", labelFor:"mi1", text:"Multi input 1"}),
+			new sap.m.MultiInput({
+				id:"mi1",
+				tokens: [
+					new sap.m.Token({text: "Token 1", key: "0001"}),
+					new sap.m.Token({text: "Token 2", key: "0002"}),
+					new sap.m.Token({text: "Token 3", key: "0003"}),
+					new sap.m.Token({text: "Token 4", key: "0004"}),
+					new sap.m.Token({text: "Token 5", key: "0005"}),
+					new sap.m.Token({text: "Token 6", key: "0006"}),
+					new sap.m.Token({text: "Token 7", key: "0007"}),
+					new sap.m.Token({text: "Token 8", key: "0008"}),
+					new sap.m.Token({text: "Token 9", key: "0009"})
+				]
+			})
+		];
+
+		for (var i = 2; i < 16; i++) {
+			aDialogContent.push(new sap.m.Label({id:"mil" + i, labelFor:"mi" + i, text:"Multi input " + i}));
+			aDialogContent.push(new sap.m.MultiInput({id:"mi" + i}));
+		}
+
+		var oDialog = new sap.m.Dialog("dialog", {
+			title: "Multi Inputs",
+			contentWidth: "420px",
+			horizontalScrolling: false,
+			content: aDialogContent,
+			beginButton:
+				new sap.m.Button({
+					text: "OK",
+					type: sap.m.ButtonType.Accept,
+					press : function() {
+						oDialog.close();
+					}
+				}),
+			endButton:
+				new sap.m.Button("btnCancel",{
+					text: "Cancel",
+					type: sap.m.ButtonType.Reject,
+					press : function() {
+						oDialog.close();
+					}
+			})
+		});
+
+		// open in a dialog
+		function openDialog(){
+			oDialog.open();
+		}
+
+		//*******************************
+		var oSearchProvider = new sap.ui.core.search.OpenSearchProvider({
+			suggestUrl: "../../../proxy/http/en.wikipedia.org/w/api.php?action=opensearch&namespace=0&search={searchTerms}",
+			suggestType: "json"
+		});
+
+		var fSuggest = function(oEvent){
+			var that = this;
+			oSearchProvider.suggest(oEvent.getParameter("suggestValue"), function(sValue, aSuggestions){
+				if(sValue === that.getValue()){
+					that.destroySuggestionItems();
+					for(var i=0; i<aSuggestions.length; i++){
+						that.addSuggestionItem(new sap.ui.core.Item({text: aSuggestions[i], key: aSuggestions[i]}));
+					}
+				}
+			});
+		};
+
+		var fValueHelpRequested = function(evt) {
+			sap.m.MessageBox.alert("Value help requested");
+		};
+
+		//*******************************
+		var oMultiInput1 = new sap.m.MultiInput({
+			placeholder: "add tokens by suggestions",
+			suggest: fSuggest,
+			valueHelpRequest: fValueHelpRequested,
+			width:"75%"
+		});
+
+		//*******************************
+		var oMultiInput4 = new sap.m.MultiInput("multiInputNotEditable", {
+			value : "Some text",
+			tokens: [
+				new sap.m.Token({text: "Token 1", key: "0001"}),
+				new sap.m.Token({text: "Token 2", key: "0002"}),
+				new sap.m.Token({text: "Token 3", key: "0003"}),
+				new sap.m.Token({text: "Token 4", key: "0004"})
+		 	],
+			editable: false
+		});
+
+		oMultiInput4.setTokens([
+			 new sap.m.Token({text: "Token 1", key: "0001"}),
+			 new sap.m.Token({text: "Token 2", key: "0002", editable: false}),
+			 new sap.m.Token({text: "Token 3", key: "0003"}),
+			 new sap.m.Token({text: "Token 4 with a long text", key: "0004", editable: false})
+		]);
+
+		oMultiInput5 = new sap.m.MultiInput("mI5", {
+			enableMultiLineMode: true,
+			width: "500px"
+		});
+		oMultiInput5.setTokens([
+		   			         new sap.m.Token({text: "Token 1", key: "0001"}),
+ 		   			         new sap.m.Token({text: "Token 2", key: "0002"}),
+		   			         new sap.m.Token({text: "Token 3", key: "0003"}),
+		   			         new sap.m.Token({text: "Token 4", key: "0004"}),
+		   			     	 new sap.m.Token({text: "longTokenlongToken 5", key: "0005"}),
+		   			         new sap.m.Token({text: "Token 6", key: "0006"}),
+		   			         new sap.m.Token({text: "Token 7", key: "0007"}),
+		   			         new sap.m.Token({text: "longToken 8", key: "0008"}),
+		   			     	 new sap.m.Token({text: "Token 9", key: "0009"}),
+		   			         new sap.m.Token({text: "Token 10", key: "0010"})
+		   			         ]);
+		oMultiInput5.addValidator(function(args){
+			if (oCheckBoxAcceptValidation.getSelected()){
+				var text = args.text;
+				return new sap.m.Token({key: text, text: "\""+text+"\""});
+			}
+		});
+
+		oMultiInput5.addValidator(function(args){
+			sap.m.MessageBox.confirm("Do you really want to add this token?", {
+				onClose: function(oAction) {
+					if (oAction === sap.m.MessageBox.Action.OK){
+						args.asyncCallback(args.suggestedToken);
+					}
+					else{
+						args.asyncCallback(null);
+					}
+				},
+				title: "add Token"
+			});
+			return sap.m.MultiInput.WaitForAsyncValidation;
+		});
+
+		//*******************************
+ 		var oCheckBoxAcceptValidation = new sap.m.CheckBox({text: "Accept tokens", selected: true});
+
+		var oMultiInputCustomValidator = new sap.m.MultiInput("multiInputCustomValidator",{
+			placeholder: "tokens validated by custom validator",
+			valueHelpRequest: fValueHelpRequested,
+			tokenChange: fEventWriter,
+			width:"85%",
+			ariaLabelledBy: "singleLineMode-label"
+		});
+
+		oMultiInputCustomValidator.setTokens([
+		   			         new sap.m.Token({text: "Token 1 with a much much much longer text than the rest", key: "0001"}),
+		   			         new sap.m.Token({text: "Token 2", key: "0002"}),
+		   			         new sap.m.Token({text: "Token 3", key: "0003"}),
+		   			         new sap.m.Token({text: "Token 4", key: "0004"})
+		   			         ]);
+
+		oMultiInputCustomValidator.addValidator(function(args){
+			if (oCheckBoxAcceptValidation.getSelected()){
+				var text = args.text;
+				return new sap.m.Token({key: text, text: "\""+text+"\""});
+			}
+		});
+
+		oMultiInputCustomValidator.addValidator(function(args){
+			sap.m.MessageBox.confirm("Do you really want to add this token?", {
+				onClose: function(oAction) {
+					if (oAction === sap.m.MessageBox.Action.OK){
+						args.asyncCallback(args.suggestedToken);
+					}
+					else{
+						args.asyncCallback(null);
+					}
+				},
+				title: "add Token"
+			});
+			return sap.m.MultiInput.WaitForAsyncValidation;
+		});
+
+		//*******************************
+		var oMultiInputCustomAsyncValidator = new sap.m.MultiInput("multiInputCustomAsyncValidator", {
+			placeholder: "tokens get validated asynchronously after 500ms + 500ms",
+			valueHelpRequest: fValueHelpRequested,
+			tokenChange: fEventWriter,
+			ariaLabelledBy: "singleLineMode-label"
+		});
+
+		var fValidator = function(args){
+			window.setTimeout(function(){
+				args.asyncCallback(new sap.m.Token({text: args.text}));
+			},500);
+			return sap.m.MultiInput.WaitForAsyncValidation;
+		};
+
+		oMultiInputCustomAsyncValidator.addValidator(fValidator);
+		oMultiInputCustomAsyncValidator.addValidator(fValidator);
+
+		//*******************************
+		var oMultiInputCustomAsyncValidatorML = new sap.m.MultiInput("mIAsyncValidatorML", {
+			enableMultiLineMode: true,
+			placeholder: "tokens get validated asynchronously after 500ms + 500ms",
+			valueHelpRequest: fValueHelpRequested,
+			tokenChange: fEventWriter
+		});
+
+		var fValidator = function(args){
+			window.setTimeout(function(){
+				args.asyncCallback(new sap.m.Token({text: args.text}));
+			},500);
+			return sap.m.MultiInput.WaitForAsyncValidation;
+		};
+
+		oMultiInputCustomAsyncValidatorML.addValidator(fValidator);
+		oMultiInputCustomAsyncValidatorML.addValidator(fValidator);
+
+		//*******************************
+		var oChangeTextValidatorMultiInput = new sap.m.MultiInput({
+			placeholder: "token text changed by validator",
+			valueHelpRequest: fValueHelpRequested,
+			tokenChange: fEventWriter,
+			width:"85%",
+			ariaLabelledBy: "singleLineMode-label"
+		});
+		var iKeyCount = 0;
+		oChangeTextValidatorMultiInput.addValidator(function(args){
+				var text = args.text;
+				iKeyCount++;
+				return new sap.m.Token({key: iKeyCount, text: text+ " ("+ iKeyCount+")"});
+		});
+		//*******************************
+		//*******************************
+		// JSON Model for rows and i18n model for columns
+		// value help and tabular suggestions
+		//*******************************
+
+		// data for tabular suggestions
+		var oSuggestionData = {
+			tabularSuggestionItems : [{
+				name : "Holter-di-polter",
+				qty : "10 EA",
+				limit : "15.00 Eur",
+				price : "12.00 EUR"
+			}, {
+				name : "Ha so was",
+				qty : "10 EA",
+				limit : "5.00 Eur",
+				price : "3.00 EUR"
+			}, {
+				name : "Hurra einp Produkt",
+				qty : "8 EA",
+				limit : "60.00 Eur",
+				price : "45.00 EUR"
+			}, {
+				name : "Hallo du tolles Ding",
+				qty : "2 EA",
+				limit : "40.00 Eur",
+				price : "15.00 EUR"
+			}, {
+				name : "Hier sollte ich zuschlagen",
+				qty : "10 EA",
+				limit : "90.00 Eur",
+				price : "55.00 EUR"
+			},{
+				name : "Hohoho",
+				qty : "18 EA",
+				limit : "29.00 Eur",
+				price : "7.00 EUR"
+			}, {
+				name : "Holla die Waldfee",
+				qty : "3 EA",
+				limit : "55.00 Eur",
+				price : "30.00 EUR"
+			}, {
+				name : "Hau Ruck",
+				qty : "5 EA",
+				limit : "2.00 Eur",
+				price : "1.00 EUR"
+			}, {
+				name : "Haste mal nen Euro?",
+				qty : "29 EA",
+				limit : "99.00 Eur",
+				price : "42.00 EUR"
+			}, {
+				name : "Hol es dir jetzt",
+				qty : "4 EA",
+				limit : "85.00 Eur",
+				price : "10.00 EUR"
+			}]
+		};
+
+		var oTabularSuggestMultiInput = new sap.m.MultiInput("tabularSuggestMI", {
+			width: "60%",
+			tokens:[
+ 			        new sap.m.Token({text: "Token 1", key: "0001"}),
+ 				    new sap.m.Token({text: "Token 2", key: "0002"}),
+ 					new sap.m.Token({text: "Token 3", key: "0003"}),
+ 					new sap.m.Token({text: "Token 4", key: "0004"}),
+ 					new sap.m.Token({text: "Token 5", key: "0005"}),
+ 					new sap.m.Token({text: "Token 6", key: "0006"})
+			],
+			placeholder: "Tabular suggest with JSON binding (starts with H)",
+			valueHelpRequest: fValueHelpRequested,
+			suggestionColumns : [
+				new sap.m.Column({
+					styleClass : "name",
+					hAlign : "Left",
+					header : new sap.m.Label({
+						text : "Name"
+					})
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "qty",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "Qty"
+					}),
+					minScreenWidth : "Tablet",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "limit",
+					width : "30%",
+					header : new sap.m.Label({
+						text : "Value"
+					}),
+					minScreenWidth : "XXSmall",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Right",
+					styleClass : "price",
+					width : "30%",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "Price"
+					}),
+					minScreenWidth : "400px",
+					demandPopin : true
+				})
+			]
+		});
+
+		oTabularSuggestMultiInput.addValidator(function(args){
+			if (args.suggestionObject){
+				var key = args.suggestionObject.getCells()[0].getText();
+				var text = key + "("+args.suggestionObject.getCells()[3].getText()+")";
+
+				return new sap.m.Token({key: key, text: text});
+			}
+			return null;
+		});
+
+		var oTableItemTemplate = new sap.m.ColumnListItem({
+			type : "Active",
+			vAlign : "Middle",
+			cells : [
+				new sap.m.Label({
+					text : "{name}"
+				}),
+				new sap.m.Label({
+					text: "{qty}"
+				}), new sap.m.Label({
+					text: "{limit}"
+				}), new sap.m.Label({
+					text : "{price}"
+				})
+			]
+		});
+
+		var oModel = new sap.ui.model.json.JSONModel();
+		oModel.setData(oSuggestionData);
+		oTabularSuggestMultiInput.setModel(oModel);
+		oTabularSuggestMultiInput.bindAggregation("suggestionRows", "/tabularSuggestionItems", oTableItemTemplate);
+
+
+
+		//*******************************
+		var oTabularSuggestMultiInputML = new sap.m.MultiInput({
+			width: "60%",
+			enableMultiLineMode: true,
+			tokens:[
+ 			        new sap.m.Token({text: "Token 1", key: "0001"}),
+ 				    new sap.m.Token({text: "Token 2", key: "0002"}),
+ 					new sap.m.Token({text: "Token 3", key: "0003"}),
+ 					new sap.m.Token({text: "Token 4", key: "0004"}),
+ 					new sap.m.Token({text: "Token 5", key: "0005"}),
+ 					new sap.m.Token({text: "Token 6", key: "0006"})
+			],
+			valueHelpRequest: fValueHelpRequested,
+			suggestionColumns : [
+				new sap.m.Column({
+					styleClass : "name",
+					hAlign : "Left",
+					header : new sap.m.Label({
+						text : "Name"
+					})
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "qty",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "Qty"
+					}),
+					minScreenWidth : "Tablet",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Center",
+					styleClass : "limit",
+					width : "30%",
+					header : new sap.m.Label({
+						text : "Value"
+					}),
+					minScreenWidth : "XXSmall",
+					demandPopin : true
+				}),
+				new sap.m.Column({
+					hAlign : "Right",
+					styleClass : "price",
+					width : "30%",
+					popinDisplay : "Inline",
+					header : new sap.m.Label({
+						text : "Price"
+					}),
+					minScreenWidth : "400px",
+					demandPopin : true
+				})
+			]
+		});
+
+		oTabularSuggestMultiInputML.addValidator(function(args){
+			if (args.suggestionObject){
+				var key = args.suggestionObject.getCells()[0].getText();
+				var text = key + "("+args.suggestionObject.getCells()[3].getText()+")";
+
+				return new sap.m.Token({key: key, text: text});
+			}
+			return null;
+		});
+
+		var oTableItemTemplate = new sap.m.ColumnListItem({
+			type : "Active",
+			vAlign : "Middle",
+			cells : [
+				new sap.m.Label({
+					text : "{name}"
+				}),
+				new sap.m.Label({
+					text: "{qty}"
+				}), new sap.m.Label({
+					text: "{limit}"
+				}), new sap.m.Label({
+					text : "{price}"
+				})
+			]
+		});
+
+		var oModel = new sap.ui.model.json.JSONModel();
+		oModel.setData(oSuggestionData);
+		oTabularSuggestMultiInputML.setModel(oModel);
+		oTabularSuggestMultiInputML.bindAggregation("suggestionRows", "/tabularSuggestionItems", oTableItemTemplate);
+
+
+		//*******************************
+		var theCompactMode= new sap.m.CheckBox("compactMode", {
+			selected: false,
+			select : function() {
+				$("body").toggleClass("sapUiSizeCompact");
+			}
+		});
+		//*******************************
+		var compareInput = new sap.m.Input({width:"25%", showValueHelp: true, placeholder: "comparison sap.m.Input"});
+
+		//******************************************************************************************************
+			var oModel = new sap.ui.model.json.JSONModel();
+
+	var mData = {
+		"selected" : ["AR", "BH"],
+		"items" : [{
+			"key" : "DZ",
+			"text" : "Algeria"
+		},
+
+		{
+			"key" : "AR",
+			"text" : "Argentina"
+		}, {
+			"key" : "AR1",
+			"text" : "Argentina"
+		}, {
+			"key" : "AU",
+			"text" : "Australia"
+		},
+
+		{
+			"key" : "AT",
+			"text" : "Austria"
+		},
+
+		{
+			"key" : "BH",
+			"text" : "Bahrain"
+		},
+
+		{
+			"key" : "BE",
+			"text" : "Belgium"
+		},
+
+		{
+			"key" : "BA",
+			"text" : "Bosnia and Herzegovina"
+		},
+
+		{
+			"key" : "BR",
+			"text" : "Brazil"
+		},
+
+		{
+			"key" : "BG",
+			"text" : "Bulgaria"
+		},
+
+		{
+			"key" : "CA",
+			"text" : "Canada"
+		},
+
+		{
+			"key" : "CL",
+			"text" : "Chile"
+		},
+
+		{
+			"key" : "CO",
+			"text" : "Colombia"
+		},
+
+		{
+			"key" : "HR",
+			"text" : "Croatia"
+		},
+
+		{
+			"key" : "CZ",
+			"text" : "Czech Republic"
+		},
+
+		{
+			"key" : "DK",
+			"text" : "Denmark"
+		},
+
+		{
+			"key" : "EG",
+			"text" : "Egypt"
+		},
+
+		{
+			"key" : "EE",
+			"text" : "Estonia"
+		},
+
+		{
+			"key" : "FI",
+			"text" : "Finland"
+		},
+
+		{
+			"key" : "FR",
+			"text" : "France"
+		},
+
+		{
+			"key" : "GH",
+			"text" : "Ghana"
+		},
+
+		{
+			"key" : "GR",
+			"text" : "Greece"
+		},
+
+		{
+			"key" : "HK",
+			"text" : "Hong Kong"
+		},
+
+		{
+			"key" : "HU",
+			"text" : "Hungary"
+		},
+
+		{
+			"key" : "IN",
+			"text" : "India"
+		},
+
+		{
+			"key" : "ID",
+			"text" : "Indonesia"
+		},
+
+		{
+			"key" : "IE",
+			"text" : "Ireland"
+		},
+
+		{
+			"key" : "IL",
+			"text" : "Israel"
+		},
+
+		{
+			"key" : "IT",
+			"text" : "Italy"
+		},
+
+		{
+			"key" : "JP",
+			"text" : "Japan"
+		},
+
+		{
+			"key" : "JO",
+			"text" : "Jordan"
+		},
+
+		{
+			"key" : "KE",
+			"text" : "Kenya"
+		},
+
+		{
+			"key" : "KW",
+			"text" : "Kuwait"
+		},
+
+		{
+			"key" : "LV",
+			"text" : "Latvia"
+		},
+
+		{
+			"key" : "LT",
+			"text" : "Lithuania"
+		},
+
+		{
+			"key" : "MK",
+			"text" : "Macedonia"
+		},
+
+		{
+			"key" : "MY",
+			"text" : "Malaysia"
+		},
+
+		{
+			"key" : "MX",
+			"text" : "Mexico"
+		},
+
+		{
+			"key" : "ME",
+			"text" : "Montenegro"
+		},
+
+		{
+			"key" : "MA",
+			"text" : "Morocco"
+		},
+
+		{
+			"key" : "NL",
+			"text" : "Netherlands"
+		},
+
+		{
+			"key" : "NZ",
+			"text" : "New Zealand"
+		},
+
+		{
+			"key" : "NG",
+			"text" : "Nigeria"
+		},
+
+		{
+			"key" : "NO",
+			"text" : "Norway"
+		},
+
+		{
+			"key" : "OM",
+			"text" : "Oman"
+		},
+
+		{
+			"key" : "PE",
+			"text" : "Peru"
+		},
+
+		{
+			"key" : "PH",
+			"text" : "Philippines"
+		},
+
+		{
+			"key" : "PL",
+			"text" : "Poland"
+		},
+
+		{
+			"key" : "PT",
+			"text" : "Portugal"
+		},
+
+		{
+			"key" : "QA",
+			"text" : "Qatar"
+		},
+
+		{
+			"key" : "RO",
+			"text" : "Romania"
+		},
+
+		{
+			"key" : "RU",
+			"text" : "Russia"
+		},
+
+		{
+			"key" : "SA",
+			"text" : "Saudi Arabia"
+		},
+
+		{
+			"key" : "SN",
+			"text" : "Senegal"
+		},
+
+		{
+			"key" : "RS",
+			"text" : "Serbia"
+		},
+
+		{
+			"key" : "SG",
+			"text" : "Singapore"
+		},
+
+		{
+			"key" : "SK",
+			"text" : "Slovakia"
+		},
+
+		{
+			"key" : "SI",
+			"text" : "Slovenia"
+		},
+
+		{
+			"key" : "ZA",
+			"text" : "South Africa"
+		},
+
+		{
+			"key" : "KR",
+			"text" : "South Korea"
+		},
+
+		{
+			"key" : "ES",
+			"text" : "Spain"
+		},
+
+		{
+			"key" : "SE",
+			"text" : "Sweden"
+		},
+
+		{
+			"key" : "CH",
+			"text" : "Switzerland"
+		},
+
+		{
+			"key" : "TW",
+			"text" : "Taiwan"
+		},
+
+		{
+			"key" : "TN",
+			"text" : "Tunisia"
+		},
+
+		{
+			"key" : "TR",
+			"text" : "Turkey"
+		},
+
+		{
+			"key" : "UG",
+			"text" : "Uganda"
+		},
+
+		{
+			"key" : "UA",
+			"text" : "Ukraine"
+		},
+
+		{
+			"key" : "AE",
+			"text" : "United Arab Emirates"
+		},
+
+		{
+			"key" : "GB",
+			"text" : "United Kingdom"
+		},
+
+		{
+			"key" : "YE",
+			"text" : "Yemen"
+		}]
+	};
+
+	oModel.setData(mData);
+	sap.ui.getCore().setModel(oModel);
+
+	var oItemTemplate = new sap.ui.core.Item({
+		key : "{key}",
+		text : "{text}"
+	});
+
+	var oComboBox = new sap.m.MultiComboBox({
+		placeholder : "Choose your country",
+		width : "85%",
+		items : {
+			path : "/items",
+			template : oItemTemplate
+		},
+
+		change : function(oControlEvent) {
+			jQuery.sap.log.info('Event fired: "change" value property to ' + oControlEvent.getParameter("value") + " on "
+					+ this);
+		},
+
+		selectionChange : function(oControlEvent) {
+			jQuery.sap.log.info('Event fired: "selectionChange" value property to '
+					+ oControlEvent.getParameter("selectedItem") + " on " + this);
+		}
+	});
+
+	oComboBox.setSelectedKeys(["GB", "UG","DE", "TR", "DK"]);
+
+	//*******data binding example***************************************************************
+
+
+		jQuery.sap.require("sap.ui.model.json.JSONModel");
+
+		// JSON sample data
+		var data = {
+			modelData:[
+				{lastName:"Doe",gender:"Male"},
+				{lastName:"Ali",gender:"Female"}
+			]};
+
+		// create JSON model instance
+		var oModel = new sap.ui.model.json.JSONModel();
+
+		// set the data for the model
+		oModel.setData(data);
+
+		// set the model to the core
+		sap.ui.getCore().setModel(oModel);
+
+		// define the template
+		var oItemTemplate = new sap.m.ColumnListItem({
+			cells : [
+				new sap.m.Label({
+					text: "{lastName}"
+				}),
+				new sap.m.MultiInput({
+					tokens:[
+						new sap.m.Token({text:"{lastName}", key:"{lastName}"}),
+					    new sap.m.Token({text:"{gender}", key:"{gender}"})
+					]
+				})
+			]
+		});
+
+		var aColumns = [
+       		new sap.m.Column({
+       			header : new sap.m.Label({
+       				text : "LastName"
+       			}),
+   				width: "100px"
+       		}),
+       		new sap.m.Column({
+       			header : new sap.m.Label({
+       				text : "LastName + Gender"
+       			})
+       		})
+		    ];
+
+	    var oTable = new sap.m.Table("tableTamplate", { columns : aColumns});
+	    oTable.bindItems("/modelData", oItemTemplate);
+
+	   //******************************************
+		var oMultiInput6 = new sap.m.MultiInput("multiInput6", {
+			 width: "500px",
+			 enableMultiLineMode: true
+
+		});
+
+		oMultiInput6.setTokens([
+		                        new sap.m.Token({text: "Token 1", key: "0001"}),
+				   			    new sap.m.Token({text: "Token 2", key: "0002"}),
+				   			    new sap.m.Token({text: "Token 3", key: "0003"}),
+				   			    new sap.m.Token({text: "Token 4", key: "0004"}),
+				   			    new sap.m.Token({text: "Token 5", key: "0005"}),
+				   			    new sap.m.Token({text: "Token 6", key: "0006"})
+				   			    ]);
+
+		//*** add checkbox validator
+		oMultiInput6.addValidator(function(args){
+				var text = args.text;
+				return new sap.m.Token({key: text, text: text});
+		});
+
+	   //******************************************
+	   var oMultiInput7 = new sap.m.MultiInput("multiInput7", {
+			 width: "500px",
+			 enableMultiLineMode: true
+
+		});
+
+		oMultiInput7.setTokens([
+		                        new sap.m.Token({text: "Token 1", key: "0001"}),
+				   			    new sap.m.Token({text: "Token 2", key: "0002"}),
+				   			    new sap.m.Token({text: "Token 3", key: "0003"}),
+				   			    new sap.m.Token({text: "Token 4", key: "0004"}),
+				   			    new sap.m.Token({text: "Token 5", key: "0005"}),
+				   			    new sap.m.Token({text: "Token 6", key: "0006"})
+				   			    ]);
+
+		//*** add checkbox validator
+		oMultiInput7.addValidator(function(args){
+				var text = args.text;
+				return new sap.m.Token({key: text, text: text});
+		});
+
+		var oLayout = new sap.ui.layout.VerticalLayout({
+			content: [ oMultiInput7 ]
+		});
+
+	   //******************************************
+				var oSimpleForm = new sap.ui.layout.form.SimpleForm("simpleFrom", {
+				editable: true,
+				title : "MultiInput in SimpleForm",
+				content: [
+					new sap.m.Label({text:"Street/ Number"}),
+					oMultiInput7
+				]
+			});
+	   //******************************************
+	   //maxTokens
+	   var oMultiInput8 = new sap.m.MultiInput("multiInputNoPlaceholder", {
+		    enableMultiLineMode: true,
+		    maxTokens: 3
+	    });
+
+	    oMultiInput8.addValidator(function(args){
+			var text = args.text;
+			return new sap.m.Token({key: text, text: text});
+		});
+
+
+		//editable/read-only
+
+		var oMultiInput9 = new sap.m.MultiInput("multiInputReadOnlyTokens", {
+			width : "60%",
+			tokens : [
+				new sap.m.Token({text: "Token 1", key: "0001"}),
+				new sap.m.Token({text: "Token 2", key: "0002", editable : false}),
+				new sap.m.Token({text: "Token 3", key: "0003"}),
+				new sap.m.Token({text: "Token 4", key: "0004", editable : false})
+			]
+		});
+
+		var readOnlyButton = new sap.m.ToggleButton({
+			text : "Toggle Read-Only",
+			press : function() {
+				oMultiInput9.setEditable(!oMultiInput9.getEditable());
+			}
+		});
+
+		var oSelectDialog = new sap.m.SelectDialog();
+			var openSelectDialog = function() {
+				oSelectDialog.open();
+			};
+
+		var multiInputWithSelectDialog = new sap.m.MultiInput("multiInputWithSelectDialog", {
+			valueHelpRequest: openSelectDialog,
+			enableMultiLineMode: true,
+			tokens: [
+				new sap.m.Token("testtoken", {
+					key: "Key1",
+					text: "Text1"
+				}),
+				new sap.m.Token("secondtesttoken", {
+					key: "Key2",
+					text: "Text2"
+				})
+			]
+		});
+
+		var oTokensModel = new sap.ui.model.json.JSONModel({
+			tokens: [
+				{
+					key: 'key1',
+					text: 'Token 1'
+				},
+				{
+					key: 'key2',
+					text: 'Token 2'
+				},
+				{
+					key: 'key3',
+					text: 'Token 3'
+				}
+			]
+		});
+
+
+		var multiInputWithDataBinding = new sap.m.MultiInput({
+			tokenUpdate: function (oEvent) {
+
+				var eventType = oEvent.getParameter("type");
+				if (eventType != sap.m.Tokenizer.TokenUpdateType.Removed) {
+					return;
+				}
+
+				oEvent.preventDefault();
+
+				var token,
+					key,
+					removedTokens = oEvent.getParameter("removedTokens"),
+					model = oEvent.getSource().getModel(),
+					data = model.getData().tokens;
+
+				for (var i = 0; i < removedTokens.length; i++) {
+					token = removedTokens[i];
+					key = token.getKey();
+
+					data = data.filter(function(item) {
+						return item.key != key;
+					});
+				}
+
+				model.setData({
+					tokens: data
+				});
+			},
+			tokens: {
+				path: '/tokens',
+				template: new sap.m.Token({
+					key: '{key}',
+					text: '{text}'
+				})
+			}
+		});
+
+		multiInputWithDataBinding.setModel(oTokensModel);
+		multiInputWithDataBinding.addValidator(function(args) {
+			var text = args.text,
+				model = multiInputWithDataBinding.getModel(),
+				data = model.getData().tokens;
+
+			for (var i = 0; i < data.length; i++) {
+				if (data[i].key == text) {
+					return;
+				}
+			}
+
+			data.push({
+				key: text,
+				text: text
+			});
+
+			model.setData({
+				tokens: data
+			});
+		});
+
+	   //******************************************
+		var app = new sap.m.App("myApp");
+
+		var page1 = new sap.m.Page("page1", {
+			title:"Mobile MultiInput Control",
+			content : [
+					new sap.m.Label({labelFor: theCompactMode.getId(), text: "Compact Mode"}),
+					theCompactMode,
+					new sap.m.Label("singleLineMode-label", {labelFor: oMultiInputCustomAsyncValidator.getId(), text : "singleLineMode", width:"100%"}),
+					oMultiInputCustomValidator,
+					oCheckBoxAcceptValidation,
+					oMultiInputCustomAsyncValidator,
+					oChangeTextValidatorMultiInput,
+					new sap.m.Label({labelFor: oTabularSuggestMultiInput.getId(), text: "Tabular Suggest MultiInput: "}),
+					oTabularSuggestMultiInput,
+					new sap.m.Label({labelFor: oMultiInput5.getId(), text : "EnableMultiLineMode: true + synchronously validation", width:"100%"}),
+					oMultiInput5,
+					new sap.m.Label({labelFor: oMultiInputCustomAsyncValidatorML.getId(), text : "EnableMultiLineMode: true + asynchronously validation after 500ms + 500ms", width:"100%"}),
+					oMultiInputCustomAsyncValidatorML,
+					new sap.m.Label({labelFor: oSimpleForm.getId(), text : "MultiInput in simple form", width:"100%"}),
+					oSimpleForm,
+					new sap.m.MultiInput("mIWarning", {
+						placeholder: "Placeholder text",
+						valueState: "Warning",
+						valueStateText: "Simple value state warning text",
+						valueHelpRequest: fValueHelpRequested,
+						width: "33%"
+					}),
+					new sap.m.MultiInput("mIError", {
+						placeholder: "Placeholder text",
+						valueStateText: "Simple value state error text",
+						valueState: "Error",
+						valueHelpRequest: fValueHelpRequested,
+						width: "33%"
+					}),
+					new sap.m.MultiInput("mISuccess", {
+						placeholder: "Placeholder text",
+						valueState: "Success",
+						valueHelpRequest: fValueHelpRequested,
+						width: "33%"
+					}),
+					new sap.m.Label({labelFor: oMultiInput4.getId(), text: "MultiInput.editable = false", width:"100%"}),
+					oMultiInput4,
+					new sap.m.VBox({items: [new sap.m.Button({text: "Open Popup", press: openDialog})]}),
+					new sap.m.Label({labelFor: oTable.getId(), text : "token databinding in MultiInput"}),
+					oTable,
+					new sap.m.Label({labelFor: oMultiInput8.getId(), text:"MultiInput with maximum three tokens"}),
+					oMultiInput8,
+					new sap.m.Label({labelFor: oMultiInput9.getId(), text:"MultiInput with toggle button for read only"}),
+					oMultiInput9,
+					readOnlyButton,
+					new sap.m.Label({labelFor: multiInputWithSelectDialog.getId(), text : "MultiInput with SelectDialog", width: "100%"}),
+					multiInputWithSelectDialog,
+					new sap.m.Label({labelFor: multiInputWithDataBinding.getId(), text : "MultiInput with DataBinding", width: "100%"}),
+					multiInputWithDataBinding
+			],
+			showNavButton: true,
+			navButtonPress: function(){ app.to("page2"); }
+		});
+
+		app.addPage(page1);
+
+		var page2 = new sap.m.Page("page2", {
+			title:"Navigation",
+			content : [
+					new sap.m.Label({ text : "2. page", width:"100%"})
+			],
+			showNavButton: true,
+			navButtonPress: function(){ app.back(); }
+		});
+
+		app.addPage(page2);
+
+		app.placeAt("body");
+
+		setTimeout(function() {
+			var shell = new sap.m.Shell();
+			shell.setApp(app);
+			shell.placeAt("body");
+		}, 500);
+
+</script>
+	<style>
+	body {
+		margin: 0;
+	}
+	.sapMPageScroll {
+		padding: 1rem;
+	}
+	.sapMILI-CTX .sapMInputValHelp {
+		margin-right: 0rem;
+	}
+	</style>
+
+
+	</head>
+	<body id="body" class="sapUiBody">
+	</body>
+</html>

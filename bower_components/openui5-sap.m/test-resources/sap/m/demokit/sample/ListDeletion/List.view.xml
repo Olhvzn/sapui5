@@ -1,0 +1,22 @@
+<mvc:View
+	controllerName="sap.m.sample.ListDeletion.List"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<List
+		id="list"
+		mode="Delete"
+		delete="handleDelete"
+		enableBusyIndicator="true"
+		headerText="Products"
+		growing="true"
+		items="{
+			path: '/ProductCollection'
+		}" >
+		<StandardListItem
+			title="{Name}"
+			description="{ProductId}"
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false" />
+	</List>
+</mvc:View>

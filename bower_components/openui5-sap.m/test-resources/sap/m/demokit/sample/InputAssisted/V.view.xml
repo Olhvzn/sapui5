@@ -1,0 +1,26 @@
+<mvc:View
+	controllerName="sap.m.sample.InputAssisted.C"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<l:VerticalLayout
+		class="sapUiContentPadding"
+		width="100%">
+		<l:content>
+			<Label text="Product" labelFor="productInput"/>
+			<Input
+				id="productInput"
+				type="Text"
+				placeholder="Enter Product ..."
+				showSuggestion="true"
+				showValueHelp="true"
+				valueHelpRequest="handleValueHelp"
+				suggestionItems="{/ProductCollection}" >
+				<suggestionItems>
+					<core:Item text="{Name}" />
+				</suggestionItems>
+			</Input>
+		</l:content>
+	</l:VerticalLayout>
+</mvc:View>

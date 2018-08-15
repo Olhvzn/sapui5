@@ -1,0 +1,62 @@
+<mvc:View
+	height="100%"
+	controllerName="sap.m.sample.TableBreadcrumb.Page"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page showHeader="false">
+		<content>
+			<Table
+				selectionChange="handleSelectionChange"
+				inset="false"
+				id="idProductsTable">
+				<headerToolbar>
+					<Toolbar
+						id="idCrumbToolbar" />
+				</headerToolbar>
+				<infoToolbar>
+					<Toolbar visible="{Order>/hasCounts}">
+						<Label text="{Order>/count} Products Selected" />
+					</Toolbar>
+				</infoToolbar>
+				<columns>
+					<Column
+						width="12em">
+						<Text text="Name" />
+					</Column>
+					<Column
+						id="dimensionsColumn"
+						minScreenWidth="Tablet"
+						demandPopin="true"
+						hAlign="End"
+						visible="false">
+						<Text text="Dimensions" />
+					</Column>
+					<Column
+						id="weightColumn"
+						minScreenWidth="Tablet"
+						demandPopin="true"
+						hAlign="Center"
+						visible="false">
+						<Text text="Weight" />
+					</Column>
+					<Column
+						hAlign="End">
+						<Text text="Price" />
+					</Column>
+				</columns>
+			</Table>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button
+					text="Order"
+					enabled="{
+						path: 'Order>/',
+						formatter: 'sap.m.sample.TableBreadcrumb.Formatter.isAnyProductSelected'
+					}"
+					press="handleOrderPress" />
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

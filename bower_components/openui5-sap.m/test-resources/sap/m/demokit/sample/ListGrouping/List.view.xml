@@ -1,0 +1,34 @@
+<mvc:View
+	controllerName="sap.m.sample.ListGrouping.List"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<List
+		id="idList"
+		items="{
+			path: '/ProductCollection',
+			sorter: {
+				path: 'SupplierName',
+				descending: false,
+				group: true
+			},
+			groupHeaderFactory: '.getGroupHeader'
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<Title
+					text="Products" />
+				<ToolbarSpacer />
+				<ToggleButton
+					icon="sap-icon://menu"
+					tooltip="Enable / Disable Custom Context Menu"
+					press="onToggleContextMenu" />
+			</OverflowToolbar>
+		</headerToolbar>
+		<StandardListItem
+			title="{Name}"
+			description="{ProductId}"
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false" />
+	</List>
+</mvc:View>

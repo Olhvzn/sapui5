@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>Link - sap.m</title>
+
+		<style>
+			.sapMLnk {
+				margin: 5px;
+			}
+		</style>
+
+		<script src="shared-config.js"></script>
+		<script src="../../../resources/sap-ui-core.js"
+			id="sap-ui-bootstrap"
+			data-sap-ui-libs="sap.m">
+		</script>
+
+		<script>
+			var app = new sap.m.App("myApp", {initialPage:"page1"});
+
+			var page1 = new sap.m.Page("page1", {
+				title:"Page 1",
+				content : [
+					new sap.m.Link({
+						id: "link_focusable",
+						text : "To Page 2"
+					}),
+
+					new sap.m.Link({
+						id: "link_disabled",
+						text : "Disabled Link",
+						enabled : false
+					}),
+
+					new sap.m.Link({
+						id: "link_subtle",
+						text : "Subtle Link",
+						subtle : true,
+						press : function() {
+							app.to("page2");
+						}
+					}),
+
+					new sap.m.Link({
+						id: "link_emphasized",
+						text : "Emphasized Link",
+						emphasized : true,
+						press : function() {
+							app.to("page2");
+						}
+					}),
+
+					new sap.m.Link({
+						id: "link_disabled_subtle",
+						text : "Disabled & Subtle Link",
+						subtle : true,
+						enabled : false,
+						press : function() {
+							app.to("page2");
+						}
+					}),
+
+					new sap.m.Link({
+						id: "link_disabled_emphasized",
+						text : "Disabled & Emphasized Link",
+						emphasized : true,
+						enabled : false,
+						press : function() {
+							app.to("page2");
+						}
+					})
+				]
+
+			});
+
+			var page2 = new sap.m.Page("page2", {
+				title:"Page 2",
+				showNavButton: true,
+				navButtonText: "Page 1",
+				navButtonPress: function(){ app.back(); },
+				content : [ new sap.m.Button({
+					text : "Nothing to see, back to Page 1",
+					press : function() {
+						app.back();
+					}
+				})]
+			});
+			app.addPage(page1).addPage(page2);
+
+			app.placeAt("body");
+		</script>
+
+	</head>
+	<body id="body" class="sapUiBody">
+	</body>
+</html>

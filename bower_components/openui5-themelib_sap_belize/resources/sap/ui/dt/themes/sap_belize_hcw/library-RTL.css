@@ -1,0 +1,119 @@
+/*!
+ * UI development toolkit for HTML5 (OpenUI5)
+ * (c) Copyright 2009-2018 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+/*!
+ * UI development toolkit for HTML5 (OpenUI5)
+ * (c) Copyright 2009-2018 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+/* =========================== */
+/* Global CSS for 'base' theme */
+/* =========================== */
+#overlay-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.sapUiDtOverlay {
+  position: absolute;
+  outline: none;
+}
+.sapUiDtOverlay:before,
+.sapUiDtOverlay:after {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  box-sizing: border-box;
+}
+.sapUiDtOverlayFocusable:focus:before {
+  content: " ";
+  border: 1px dotted #000000;
+}
+.sapUiDtDummyScrollContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+.sapUiDtOverlayDropZone {
+  z-index: 9999999 !important;
+}
+.sapUiDtOverlayTargetZone:after {
+  content: " ";
+  border: 1px dashed #8fb5ff;
+}
+.sapUiDtOverlaySelected:after {
+  content: " ";
+  border: 1px solid #3355ff;
+}
+.sapUiDtOverlayMovable {
+  cursor: move;
+}
+.sapUiDtOverlayCutted {
+  background-color: #ffffff !important;
+  opacity: 0.5;
+}
+.sapUiDtDragGhostWrapper {
+  position: fixed;
+  pointer-events: none;
+}
+/* fix for chrome */
+.sap-desktop[data-sap-ui-browser^="cr"] .sapUiDtDragGhostWrapper {
+  padding-right: -500px;
+  padding-bottom: 500px;
+  bottom: -1000px;
+}
+.sapUiDtClonedDom {
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+.sapUiDtClonedDom * {
+  pointer-events: none !important;
+}
+.sapUiDtOverlayScrollContainer {
+  position: absolute;
+}
+.sapUiDtContextMenu.sapMPopover {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+.sapUiDtContextMenu .sapMPopoverScroll {
+  margin-left: 0px !important;
+}
+.sapUiDtContextMenu .sapMBtnInner {
+  text-align: left;
+}
+.sapUiDtContextMenu.sapMPopover {
+  min-width: 0px;
+}
+.sapUiDtContextMenu.sapMPopover.sapUiSizeCompact {
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+}
+/* This CSS shares it rules with all other CSS of this library */
+/* ===================================== */
+/* Quick Theming                         */
+/* ===================================== */
+/*
+ UX COLOR SET
+*/
+/* Semantic Colors */
+/* ACCENT COLORS */
+/* Semantic Background Colors */
+/* Semantic Border Colors */
+/* Semantic Foreground Elements */
+/* Semantic Text */
+/* Semantic Foreground Colors */
+/* ===================================== */
+/* Expert Theming                        */
+/* ===================================== */
+
+/* Inline theming parameters */
+#sap-ui-theme-themelib_sap_belize { background-image: url('data:text/plain;utf-8,%7B%22_sap_ui_dt_Overlay_FocusColor%22:%22#000000%22,%22_sap_ui_dt_Overlay_TargetZoneColor%22:%22#8fb5ff%22,%22_sap_ui_dt_Overlay_SelectionColor%22:%22#3355ff%22,%22_sap_ui_dt_Overlay_CuttedColor%22:%22#ffffff%22%7D'); }

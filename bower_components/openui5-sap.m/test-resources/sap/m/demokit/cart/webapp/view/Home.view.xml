@@ -1,0 +1,120 @@
+<mvc:View
+	controllerName="sap.ui.demo.cart.controller.Home"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page
+		id="page"
+		title="{i18n>homeTitle}"
+		showNavButton="{device>/system/phone}"
+		navButtonPress="onNavButtonPress">
+		<landmarkInfo>
+			<PageAccessibleLandmarkInfo
+				rootRole="Region"
+				rootLabel="{i18n>Home_rootLabel}"
+				subHeaderRole="Search"
+				subHeaderLabel="{i18n>Home_subHeaderLabel}"
+				contentRole="Navigation"
+				contentLabel="{i18n>Home_contentLabel}"
+				headerRole="Region" headerLabel="{i18n>Home_headerLabel}"/>
+		</landmarkInfo>
+		<headerContent>
+			<Button
+				icon="sap-icon://cart"
+				tooltip="{i18n>toCartButtonTooltip}"
+				press="onCartButtonPress">
+			</Button>
+		</headerContent>
+		<subHeader>
+			<Toolbar id="searchBar33343">
+				<SearchField
+					id="searchField"
+					liveChange="onSearch"
+					showRefreshButton="{=!${device>/support/touch}}"
+					placeholder="{i18n>homeSearchPlaceholder}"
+					tooltip="{i18n>homeSearchTooltip}"
+					width="100%">
+				</SearchField>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<PullToRefresh
+				id="pullToRefresh"
+				visible="{device>/support/touch}"
+				refresh="onRefresh" />
+			<!-- This list shows the search results -->
+			<List
+				visible="false"
+				id="productList"
+				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+				selectionChange="onProductListSelect"
+				noDataText="{i18n>homeNoData}"
+				items="{
+					path : '/Products',
+					sorter : {
+						path : 'Name',
+						descending : false
+					}
+				}">
+				<items>
+					<ObjectListItem
+						type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
+						icon="{
+							path : 'PictureUrl',
+							formatter : '.formatter.pictureUrl'
+						}"
+						title="{Name}"
+						number="{
+							path : 'Price',
+							formatter : '.formatter.price'
+						}"
+						numberUnit="EUR"
+						press="onProductListItemPress"
+						iconDensityAware="false">
+						<attributes>
+							<ObjectAttribute text="{SupplierName}"/>
+						</attributes>
+						<firstStatus>
+							<ObjectStatus
+								text="{
+									path : 'Status',
+									formatter : '.formatter.statusText'
+								}"
+								state="{
+									path : 'Status',
+									formatter : '.formatter.statusState'
+								}" />
+						</firstStatus>
+					</ObjectListItem>
+				</items>
+			</List>
+			<!-- This list shows the product categories -->
+			<List
+				id="categoryList"
+				headerText="{i18n>homeCategoryListHeader}"
+				mode="None"
+				items="{
+					path : '/ProductCategories',
+					sorter : {
+						path : 'CategoryName',
+						descending: false
+					}
+				}">
+				<items>
+					<StandardListItem
+						title="{CategoryName}"
+						type="Active"
+						counter="{NumberOfProducts}"
+						press="onCategoryListItemPress"
+						tooltip="{i18n>openCategoryProducts} {CategoryName}">
+						<customData>
+							<core:CustomData
+								key="id"
+								value="{Category}" />
+						</customData>
+					</StandardListItem>
+				</items>
+			</List>
+		</content>
+	</Page>
+</mvc:View>

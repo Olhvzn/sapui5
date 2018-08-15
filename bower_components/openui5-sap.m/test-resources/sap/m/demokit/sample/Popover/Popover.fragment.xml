@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		title="{Name}"
+		class="sapUiContentPadding"
+		placement="Bottom"
+			initialFocus="email">
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button
+					id="email"
+					text="Email"
+					press="handleEmailPress" />
+			</Toolbar>
+		</footer>
+		<Image src="{ProductPicUrl}" width="15em" densityAware="false" />
+	</Popover>
+</core:FragmentDefinition>

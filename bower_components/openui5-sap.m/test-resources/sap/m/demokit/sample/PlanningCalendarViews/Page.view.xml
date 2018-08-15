@@ -1,0 +1,114 @@
+<mvc:View
+	controllerName="sap.m.sample.PlanningCalendarViews.Page"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:unified="sap.ui.unified"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<VBox class="sapUiSmallMargin">
+		<PlanningCalendar
+			id="PC1"
+			startDate="{path: '/startDate'}"
+			viewKey="D"
+			rows="{path: '/people'}"
+			appointmentsVisualization="Filled"
+			appointmentSelect="handleAppointmentSelect"
+			intervalSelect="handleIntervalSelect"
+			showEmptyIntervalHeaders="false"
+			viewChange = "handleViewChange">
+			<toolbarContent>
+				<Title text="Title" titleStyle="H4"/>
+				<ToolbarSpacer/>
+				<Label id="label" text="Select a date from the interval to mark/unmark it as a non-working day."/>
+				<Select id="select" tooltip="Group appointments mode" change="handleGroupModeChange">
+					<items>
+						<core:Item key="Collapsed" text="Collapsed"/>
+						<core:Item key="Expanded" text="Expanded"/>
+					</items>
+				</Select>
+			</toolbarContent>
+			<views>
+				<PlanningCalendarView
+					key="A"
+					intervalType="Hour"
+					description="hours view"
+					intervalsS="2"
+					intervalsM="4"
+					intervalsL="6"
+					showSubIntervals="true">
+				</PlanningCalendarView>
+				<PlanningCalendarView
+					key="D"
+					intervalType="Day"
+					description="days view"
+					intervalsS="1"
+					intervalsM="3"
+					intervalsL="7"
+					showSubIntervals="true">
+				</PlanningCalendarView>
+				<PlanningCalendarView
+					key="M"
+					intervalType="Month"
+					description="months view"
+					intervalsS="1"
+					intervalsM="2"
+					intervalsL="3"
+					showSubIntervals="true">
+				</PlanningCalendarView>
+				<PlanningCalendarView
+					key="nonWorking"
+					intervalType="Day"
+					description="days with non-working dates"
+					intervalsS="1"
+					intervalsM="5"
+					intervalsL="9">
+				</PlanningCalendarView>
+			</views>
+			<rows>
+				<PlanningCalendarRow
+					icon="{pic}"
+					title="{name}"
+					text="{role}"
+					nonWorkingDays="{freeDays}"
+					nonWorkingHours= "{freeHours}"
+					appointments="{path : 'appointments', templateShareable: 'true'}"
+					intervalHeaders="{path: 'headers', templateShareable: 'true'}">
+					<appointments>
+						<unified:CalendarAppointment
+							startDate="{start}"
+							endDate="{end}"
+							icon="{pic}"
+							title="{title}"
+							text="{info}"
+							type="{type}"
+							tentative="{tentative}">
+						</unified:CalendarAppointment>
+					</appointments>
+					<intervalHeaders>
+						<unified:CalendarAppointment
+							startDate="{start}"
+							endDate="{end}"
+							icon="{pic}"
+							title="{title}"
+							type="{type}">
+						</unified:CalendarAppointment>
+					</intervalHeaders>
+				</PlanningCalendarRow>
+			</rows>
+		</PlanningCalendar>
+		<Label text="Add available built-in views to the example:"/>
+		<MultiComboBox
+				selectionFinish="handleSelectionFinish"
+				width="230px"
+				placeholder="Choose built-in views">
+			<items>
+				<core:Item key="Hour" text="Hour" />
+				<core:Item key="Day" text="Day" />
+				<core:Item key="Month" text="Month" />
+				<core:Item key="Week" text="1 week" />
+				<core:Item key="One Month" text="1 month" />
+			</items>
+		</MultiComboBox>
+		<Label text="Add or remove custom views:"/>
+		<ToggleButton text="Toggle custom views" press="onPress" />
+	</VBox>
+</mvc:View>

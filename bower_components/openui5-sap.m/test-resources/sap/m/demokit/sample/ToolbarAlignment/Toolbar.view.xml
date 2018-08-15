@@ -1,0 +1,59 @@
+<mvc:View
+	height="100%"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page>
+		<MessageStrip text="Left and Right aligned content." class="sapUiTinyMargin"/>
+		<OverflowToolbar class="sapUiMediumMarginTop">
+			<Button text="Reject" type="Reject"/>
+			<ToolbarSpacer/>
+			<Button text="Accept" type="Accept"/>
+		</OverflowToolbar>
+
+		<MessageStrip text="Centered content." class="sapUiTinyMargin"/>
+		<OverflowToolbar class="sapUiMediumMarginTop">
+			<ToolbarSpacer/>
+			<Button text="Centered content" type="Accept"/>
+			<ToolbarSpacer/>
+		</OverflowToolbar>
+
+		<MessageStrip text="Right Aligned Content." class="sapUiTinyMargin"/>
+		<OverflowToolbar class="sapUiMediumMarginTop">
+			<ToolbarSpacer/>
+			<Button text="Right aligned content" type="Accept"/>
+		</OverflowToolbar>
+
+		<MessageStrip text="You can have as many sections as you want with ToolbarSpacer." class="sapUiTinyMargin"/>
+		<OverflowToolbar class="sapUiMediumMarginTop">
+			<Button text="Accept" type="Accept"/>
+			<ToolbarSpacer/>
+			<CheckBox text="CheckBox"/>
+			<ToolbarSpacer/>
+			<Button icon="sap-icon://drop-down-list"/>
+			<ToolbarSpacer/>
+			<RadioButton text="RadioButton"/>
+			<ToolbarSpacer/>
+			<Button text="Reject" type="Reject"/>
+		</OverflowToolbar>
+
+		<MessageStrip text="Flexible Toolbar Spacers share the free horizontal space equally, thus content centering is not as precise as in Bar." class="sapUiTinyMargin"/>
+		<OverflowToolbar class="sapUiMediumMarginTop">
+			<Button text="This is a very long button text. This is a very long button text."/>
+			<ToolbarSpacer/>
+			<Button text="Centered Button"/>
+			<ToolbarSpacer/>
+			<Button text="Short Button"/>
+		</OverflowToolbar>
+
+		<MessageStrip text="ToolbarSpacer does not have to be flexible, a fixed width can be specified too." class="sapUiTinyMargin"/>
+		<OverflowToolbar class="sapUiMediumMarginTop">
+			<Input width="100px" placeholder="First Name"/>
+			<Input width="100px" placeholder="Last Name"/>
+			<ToolbarSpacer width="40px"/>
+			<Input type="Email" width="100px" placeholder="Email"/>
+			<Input type="Number" width="80px" placeholder="Age"/>
+			<ToolbarSpacer/>
+			<Button text="Submit" type="Accept"/>
+		</OverflowToolbar>
+	</Page>
+</mvc:View>

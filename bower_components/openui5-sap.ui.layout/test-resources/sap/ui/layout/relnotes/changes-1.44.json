@@ -1,0 +1,289 @@
+{
+  "1.44.0": {
+    "date": "October 2016",
+    "notes": [
+      {
+        "id": "577bd40bdc4495272ae6f327c1a5992fbe82f1d2",
+        "type": "FEATURE",
+        "text": "sap.m.Label get required property from control",
+        "references": []
+      },
+      {
+        "id": "86fec7f5d6f6ecfc4a2f970a0df5352dfaca7bb3",
+        "type": "FEATURE",
+        "text": "sap.ui.layout.BlockLayout: Belize enhancements",
+        "references": []
+      },
+      {
+        "id": "7b652471a1988f978d8619341967290c882a47ee",
+        "type": "FIX",
+        "text": "ResponsiveSplitter: add missing ARIA text, align text key",
+        "references": []
+      },
+      {
+        "id": "7afbdb345e6ea90a8307a8c5acd6dd9f80b5339e",
+        "type": "FIX",
+        "text": "changes-1.42.json: remove duplicates",
+        "references": []
+      },
+      {
+        "id": "37be474f58af55dd6e5e02de53926d40a60ef0b9",
+        "type": "FIX",
+        "text": "sap.m.VerticalLayout: Vertical-align for all browsers removed",
+        "references": []
+      },
+      {
+        "id": "7576fe0a6b2f65c40ba289fe31b93a17c9ee9f9c",
+        "type": "FIX",
+        "text": "sap.ui.layout.BlockLayout: AMD load of library.js",
+        "references": []
+      },
+      {
+        "id": "9a2ce4870815211e2ba13d05980270609ad78980",
+        "type": "FIX",
+        "text": "sap.ui.layout.FixFlex: ScrollEnablement is now used for scrolling",
+        "references": []
+      },
+      {
+        "id": "4dbf88af0ce49e4c7a0d5332287bc9db12ab3534",
+        "type": "FIX",
+        "text": "sap.ui.layout.FixFlex: Scrollbars are now correctly displayed",
+        "references": []
+      },
+      {
+        "id": "1a306500e7c906de8e0d4209bda7effbd601c26c",
+        "type": "FIX",
+        "text": "sap.ui.layout.ResponsiveSplitter: Issues with translations in qunit are now resolved",
+        "references": []
+      },
+      {
+        "id": "94ace5af1be6422385b4922187ea6fa82badac5e",
+        "type": "FIX",
+        "text": "sap.ui.layout.Splitter: Splitter containers\u0027 sizes are now properly calculated",
+        "references": []
+      },
+      {
+        "id": "6d778d0c0e44ea5bad4676642f1cc38a5b1a98de",
+        "type": "FIX",
+        "text": "sap.ui.layout.VerticalLayout - Vertical layout no longer cuts the outline and box-shadow of it\u0027s content controls",
+        "references": []
+      },
+      {
+        "id": "ede325141d811443fafb24b06662105110f3237b",
+        "type": "FIX",
+        "text": "sap.ui.layout.VerticalLayout: Vertical-align for all browsers adjusted to top",
+        "references": []
+      },
+      {
+        "id": "a9ba7162ac401eeac851b6b73703dad6845b558b",
+        "type": "FIX",
+        "text": "sap.ui.layout.form.Form: Label required visualization missing",
+        "references": []
+      },
+      {
+        "id": "a346b047602d9cbc5191faea62dd417ad4210fb9",
+        "type": "FIX",
+        "text": "sap.ui.layout.form.FormContainer: Theme image URLs",
+        "references": []
+      },
+      {
+        "id": "1bf430308f9fbbba97fdfe86fba4dcf9ad413d7c",
+        "type": "FIX",
+        "text": "sap.ui.layout.form.SimpleForm: moving content - wrong result",
+        "references": []
+      }
+    ]
+  },
+  "1.44.5": {
+    "date": "January 2017",
+    "notes": [
+      {
+        "id": "4a92cd53a76e593caa84308d3dc4f8b0aa8ab8f2",
+        "type": "FIX",
+        "text": " sap.ui.layout.FixFlex: Control no longer flickers",
+        "references": []
+      },
+      {
+        "id": "b8ccbbd8d751913101011ed5b7ef36ebf2adf6ec",
+        "type": "FIX",
+        "text": " sap.ui.layout.FixFlex: Unwanted scrollbar is now removed",
+        "references": []
+      },
+      {
+        "id": "23fff59d552a3722687b4e42a7a0a9ee62b225e4",
+        "type": "FIX",
+        "text": " sap.ui.layout.ResponsiveFlowLayout: Destroy render manager only if it exists",
+        "references": []
+      },
+      {
+        "id": "41dc917ab52976b83d2a6bd0b6cf33a80603a238",
+        "type": "FIX",
+        "text": " sap.ui.layout.Splitter: Unsubscribing to __preserveContent fixed",
+        "references": []
+      },
+      {
+        "id": "f213b3af5b800e8ac314a6011268718cc6ee8713",
+        "type": "FIX",
+        "text": " sap.ui.layout.form.SimpleForm adding content twice",
+        "references": []
+      }
+    ]
+  },
+  "1.44.6": {
+    "date": "January 2017",
+    "notes": [
+      {
+        "id": "710ca0259d141d9dfbb014a0d7bcd35968c1c6ce",
+        "type": "FIX",
+        "text": " sap.m.ResponsiveSplitter: Overlapping text and navigation CSS issue fixed",
+        "references": []
+      },
+      {
+        "id": "361f3ca6eb6acb76e83dea989f061f9935ad3683",
+        "type": "FIX",
+        "text": " sap.ui.layout.FixFlex: Scrollbar is now correctly displayed",
+        "references": []
+      }
+    ]
+  },
+  "1.44.8": {
+    "date": "February 2017",
+    "notes": [
+      {
+        "id": "6f7cffd2e523bd5c8163c9ca84cc4019f6862a65",
+        "type": "FIX",
+        "text": " sap.ui.layout.form.SimpleForm: Docu fix",
+        "references": []
+      }
+    ]
+  },
+  "1.44.10": {
+    "date": "March 2017",
+    "notes": [
+      {
+        "id": "5079f3bd13883c3f0aa3d284708f73e6947ae7d3",
+        "type": "FIX",
+        "text": " sap.ui.layout.ResponsiveSplitter: Calcuation after resizing is wrong",
+        "references": []
+      }
+    ]
+  },
+  "1.44.12": {
+    "date": "April 2017",
+    "notes": [
+      {
+        "id": "386e73e461619212c7b1453b8ef1ac137a5222ba",
+        "type": "FIX",
+        "text": " sap.ui.layout.BlockLayoutCell: Prevents longer elements from breaking the layout",
+        "references": []
+      },
+      {
+        "id": "51ec4f5e3a556767b4ef0995cef1952e01734ffc",
+        "type": "FIX",
+        "text": " sap.ui.layout.FixFlex When minFlexSize is not set, the flexible part doesn\u0027t have scrolling any more",
+        "references": []
+      }
+    ]
+  },
+  "1.44.13": {
+    "date": "May 2017",
+    "notes": [
+      {
+        "id": "adf858bd1d04a27889a7431d1ceb964cea4091ca",
+        "type": "FIX",
+        "text": " sap.ui.layout.ResponsiveSplitter: PaneContainer\u0027s content is now properly resized and rendered.",
+        "references": []
+      }
+    ]
+  },
+  "1.44.15": {
+    "date": "June 2017",
+    "notes": [
+      {
+        "id": "b4b67b314f47b91154290853526de090d9c11042",
+        "type": "FIX",
+        "text": " sap.ui.BlockLayout: Endless switching between breakpoints is now fixed.",
+        "references": []
+      },
+      {
+        "id": "dc4010b7bcc8af5de514d586c381a4487c6e479f",
+        "type": "FIX",
+        "text": " sap.ui.layout.ResponsiveSplitter: IE fialing tests fixed.",
+        "references": []
+      },
+      {
+        "id": "e771305017ff7ac36a45cdb1cb1a3b330d25b915",
+        "type": "FIX",
+        "text": " sap.ui.layout.ResponsiveSplitter: IE fialing tests fixed.",
+        "references": []
+      }
+    ]
+  },
+  "1.44.18": {
+    "date": "July 2017",
+    "notes": [
+      {
+        "id": "bf117db610b65ba949fd3bf6ab19241d03bf17a3",
+        "type": "FIX",
+        "text": " SimpleForm removing Label creates empty container",
+        "references": []
+      },
+      {
+        "id": "344151c6943eaf1d94e7666ac6e584177267fe5f",
+        "type": "FIX",
+        "text": " sap.ui.fl changeHandler needs to store dependencies",
+        "references": []
+      },
+      {
+        "id": "7e3320b31b491b3c5d49fb4aa80ec0289c87bc19",
+        "type": "FIX",
+        "text": " sap.ui.layout.ResponsiveSplitter: Inserting PaneConainers in a selected index is now working",
+        "references": []
+      }
+    ]
+  },
+  "1.44.19": {
+    "date": "August 2017",
+    "notes": [
+      {
+        "id": "dcae79e2a1e31c41d56964b1556708aa78f2b8bf",
+        "type": "FIX",
+        "text": " sap.ui.layout.FixFlex: Layout is now correct on MS Edge browser",
+        "references": []
+      }
+    ]
+  },
+  "1.44.22": {
+    "date": "October 2017",
+    "notes": [
+      {
+        "id": "48cce714f35140c78b126b766413f81c32088fd4",
+        "type": "FIX",
+        "text": " Form: don\u0027t close FormContainer if focus on Input field",
+        "references": []
+      }
+    ]
+  },
+  "1.44.23": {
+    "date": "October 2017",
+    "notes": [
+      {
+        "id": "9ea6159fe1ec4b4558a614bd802ac37affb1df19",
+        "type": "FIX",
+        "text": " sap.ui.layout.Splitter: Focus in HCB under IE is now correct",
+        "references": []
+      }
+    ]
+  },
+  "1.44.26": {
+    "date": "January 2018",
+    "notes": [
+      {
+        "id": "ea2c822ea86ec0f3cafd7c638a7e4eff2b5f27b8",
+        "type": "FIX",
+        "text": " FormContainer: render role\u003d\"form\" only if title exist",
+        "references": []
+      }
+    ]
+  }
+}

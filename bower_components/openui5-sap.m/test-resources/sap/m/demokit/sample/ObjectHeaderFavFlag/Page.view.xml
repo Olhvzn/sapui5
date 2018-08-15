@@ -1,0 +1,49 @@
+<mvc:View
+	height="100%"
+	controllerName="sap.m.sample.ObjectHeaderFavFlag.Page"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page
+		binding="{/ProductCollection/0}"
+		showHeader="false" >
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button
+					text="Favorite"
+					visible="{ff>/isNoFavorite}"
+					press="handleFavorite" />
+				<Button
+					text="Unfavorite"
+					visible="{ff>/isFavorite}"
+					press="handleUnfavorite" />
+				<Button
+					text="Flag"
+					visible="{ff>/isNotFlagged}"
+					press="handleFlag" />
+				<Button
+					text="Unflag"
+					visible="{ff>/isFlagged}"
+					press="handleUnflag" />
+			</Toolbar>
+		</footer>
+		<content>
+			<ObjectHeader
+				title="{Name}"
+				number="{
+					parts:[{path:'Price'},{path:'CurrencyCode'}],
+					type: 'sap.ui.model.type.Currency',
+					formatOptions: {showMeasure: false}
+				}"
+				numberUnit="{CurrencyCode}"
+				markFavorite="{ff>/isFavorite}"
+				markFlagged="{ff>/isFlagged}"
+				showMarkers="true">
+				<attributes>
+					<ObjectAttribute text="{WeightMeasure} {WeightUnit}" />
+					<ObjectAttribute text="{Width} x {Depth} x {Height} {DimUnit}" />
+				</attributes>
+			</ObjectHeader>
+		</content>
+	</Page>
+</mvc:View>

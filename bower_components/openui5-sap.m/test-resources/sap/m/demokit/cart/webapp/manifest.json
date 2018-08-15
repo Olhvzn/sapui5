@@ -1,0 +1,254 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "sap.ui.demo.cart",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/IWBEP/EPM_DEVELOPER_SCENARIO_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "sap.ui.demo.cart.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.36.0",
+			"libs": {
+				"sap.ui.core": {
+				},
+				"sap.m": {
+				},
+				"sap.ui.layout": {
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "sap.ui.demo.cart.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true
+			}
+		},
+		"handleValidation": true,
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "sap.ui.demo.cart.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"bypassed": {
+					"target": [
+						"home",
+						"notFound"
+					]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "home",
+					"target": [
+						"home",
+						"welcome"
+					]
+				},
+				{
+					"pattern": "categories",
+					"name": "categories",
+					"target": [
+						"homeSlide"
+					]
+				},
+				{
+					"pattern": "category/{id}",
+					"name": "category",
+					"target": [
+						"welcome",
+						"categoryView"
+					],
+					"titleTarget": "categoryView"
+				},
+				{
+					"pattern": "category/{id}/product/{productId}",
+					"name": "product",
+					"target": [
+						"categoryView",
+						"productView"
+					],
+					"titleTarget": "productView"
+				},
+				{
+					"pattern": "cart",
+					"name": "cart",
+					"target": [
+						"cart"
+					]
+				},
+				{
+					"pattern": "cart/{productId}",
+					"name": "cartProductView",
+					"target": [
+						"cart",
+						"productView"
+					]
+				},
+				{
+					"pattern": "checkout",
+					"name": "checkout",
+					"target": "checkout"
+				},
+				{
+					"pattern": "ordercompleted",
+					"name": "ordercompleted",
+					"target": "ordercompleted"
+				},
+				{
+					"pattern": "product/{productId}",
+					"name": "cartProduct",
+					"target": [
+						"home",
+						"productView"
+					]
+				}
+			],
+			"targets": {
+				"splitscreenTarget": {
+					"viewName": "SplitScreen",
+					"viewId": "splitView"
+				},
+				"productView": {
+					"viewName": "Product",
+					"viewLevel": 3,
+					"parent": "splitscreenTarget",
+					"controlId": "splitContainer",
+					"viewId": "productView",
+					"controlAggregation": "detailPages",
+					"title":"{Name}"
+				},
+				"categoryView": {
+					"viewName": "Category",
+					"viewLevel": 2,
+					"parent": "splitscreenTarget",
+					"controlId": "splitContainer",
+					"controlAggregation": "masterPages",
+					"viewId": "categoryView",
+					"title": {
+						"parts": [
+							"i18n>tabTitle",
+							"CategoryName"
+						]
+					}
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewLevel": 3,
+					"parent": "splitscreenTarget",
+					"controlId": "splitContainer",
+					"controlAggregation": "detailPages",
+					"viewId": "notFoundView",
+					"title": "{i18n>categoryNoData}"
+				},
+				"welcome": {
+					"viewName": "Welcome",
+					"viewLevel": 0,
+					"parent": "splitscreenTarget",
+					"controlId": "splitContainer",
+					"viewId": "welcomeView",
+					"controlAggregation": "detailPages"
+				},
+				"home": {
+					"viewName": "Home",
+					"viewLevel": 1,
+					"parent": "splitscreenTarget",
+					"controlId": "splitContainer",
+					"controlAggregation": "masterPages",
+					"viewId": "homeView",
+					"title": "{i18n>appTitle}"
+				},
+				"homeSlide": {
+					"viewName": "Home",
+					"viewLevel": -1,
+					"parent": "splitscreenTarget",
+					"controlId": "splitContainer",
+					"controlAggregation": "masterPages"
+				},
+				"cart": {
+					"viewName": "Cart",
+					"parent": "splitscreenTarget",
+					"controlId": "splitContainer",
+					"controlAggregation": "masterPages",
+					"viewId": "cartView",
+					"title": {
+						"parts": [
+							"i18n>tabTitle",
+							"i18n>tableTitleCart"
+						]
+					}
+				},
+				"checkout": {
+					"viewName": "Checkout",
+					"viewLevel": 1,
+					"title": "{i18n>checkoutTitle}",
+					"viewId": "checkoutView"
+				},
+				"ordercompleted": {
+					"viewName": "OrderCompleted",
+					"viewLevel": 2,
+					"viewId": "orderCompletedView",
+					"title": "{i18n>orderCompletedTitle}"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,67 @@
+<mvc:View
+	controllerName="sap.m.sample.DatePicker.Group"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<VBox class="sapUiSmallMargin">
+		<Label text="simple DatePicker" labelFor="DP1"/>
+		<DatePicker
+			id="DP1"
+			placeholder="Enter Date ..."
+			change="handleChange"
+			class="sapUiSmallMarginBottom"/>
+		<Label text="DatePicker with initialFocusedDateValue new Date(2017, 5, 13)" labelFor="DP8"/>
+		<DatePicker
+				id="DP8"
+				placeholder="Enter Date ..."
+				change="handleChange"
+				class="sapUiSmallMarginBottom"/>
+		<Label text="DatePicker with given Value and Formatter" labelFor="DP2"/>
+		<DatePicker
+			id="DP2"
+			value="2014-03-26" valueFormat="yyyy-MM-dd" displayFormat="long"
+			change="handleChange"
+			class="sapUiSmallMarginBottom"/>
+		<Label text="DatePicker with given DateValue and Formatter" labelFor="DP3"/>
+		<DatePicker
+			id="DP3"
+			displayFormat="short"
+			change="handleChange"/>
+		<Label text="DatePicker with islamic date and secondray gregorian date in calendar" labelFor="DP5"/>
+		<DatePicker
+			id="DP5"
+			value="2015-11-23"
+			valueFormat="yyyy-MM-dd"
+			displayFormat="long"
+			displayFormatType="Islamic"
+			secondaryCalendarType="Gregorian"
+			change="handleChange"/>
+		<Label text="DatePicker with minDate=2016-01-01 and maxDate=2016-12-31" labelFor="DP6"/>
+		<DatePicker
+			id="DP6"
+			displayFormat="short"
+			change="handleChange"/>
+		<Text
+			id="T1"
+			text="change event result"
+			class="sapUiSmallMarginBottom"
+			/>
+		<Label text="DatePicker using DataBinding" labelFor="DP4"/>
+		<DatePicker
+			id="DP4"
+			value="{path:'/dateValue', type:'sap.ui.model.type.Date', formatOptions: { style: 'medium', strictParsing: true}}"
+			class="sapUiSmallMarginBottom"
+			/>
+		<Label text="DatePicker with non-working days - 05.11.2015 - 25.11.2015" labelFor="DP7"/>
+		<DatePicker
+			id="DP7"
+			value="2015-11-23"
+			/>
+		<Label text="Text bound to the same model like DatePicker" labelFor="T2" />
+		<Text
+			id="T2"
+			text="{path:'/dateValue', type:'sap.ui.model.type.Date', formatOptions: { style: 'long'}}"
+			class="sapUiSmallMarginBottom"
+			/>
+	</VBox>
+</mvc:View>

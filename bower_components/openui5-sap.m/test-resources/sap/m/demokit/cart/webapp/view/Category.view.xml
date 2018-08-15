@@ -1,0 +1,95 @@
+<mvc:View
+	controllerName="sap.ui.demo.cart.controller.Category"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page
+		id="page"
+		title="{CategoryName}"
+		showNavButton="true"
+		navButtonPress="onNavButtonPress">
+		<landmarkInfo>
+			<PageAccessibleLandmarkInfo
+				rootRole="Region"
+				rootLabel="{i18n>Category_rootLabel}"
+				contentRole="Main"
+				contentLabel="{i18n>Category_contentLabel}"
+				footerRole="Region"
+				footerLabel="{i18n>Category_footerLabel}"
+				headerRole="Region"
+				headerLabel="{i18n>Category_headerLabel}"/>
+		</landmarkInfo>
+		<headerContent>
+			<Button
+				icon="sap-icon://cart"
+				tooltip="{i18n>toCartButtonTooltip}"
+				press="onCartButtonPress">
+			</Button>
+		</headerContent>
+		<content>
+			<List
+				id="productList"
+				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+				selectionChange="onProductListSelect"
+				noDataText="{i18n>categoryNoData}"
+				busyIndicatorDelay="0"
+				items="{
+					path : 'Products',
+					sorter : {
+						path : 'Name',
+						descending : false
+					}
+				}">
+				<infoToolbar>
+					<Toolbar
+						id="categoryInfoToolbar"
+						visible="false">
+						<content>
+							<Title id="categoryInfoToolbarTitle"/>
+						</content>
+					</Toolbar>
+				</infoToolbar>
+				<items>
+					<ObjectListItem
+						type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
+						icon="{
+							path : 'PictureUrl',
+							formatter : '.formatter.pictureUrl'
+						}"
+						title="{Name}"
+						number="{
+							path : 'Price',
+							formatter : '.formatter.price'
+						}"
+						numberUnit="{CurrencyCode}"
+						press="onProductListItemPress"
+						iconDensityAware="false"
+						tooltip="{i18n>openProductDetails} {Name}">
+						<attributes>
+							<ObjectAttribute text="{SupplierName}"/>
+						</attributes>
+						<firstStatus>
+							<ObjectStatus
+								text="{
+									path : 'Status',
+									formatter : '.formatter.statusText'
+								}"
+								state="{
+									path : 'Status',
+									formatter : '.formatter.statusState'
+								}" />
+						</firstStatus>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer />
+				<Button
+					id="masterListFilterButton"
+					icon="sap-icon://filter"
+					press="onMasterListFilterPressed"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

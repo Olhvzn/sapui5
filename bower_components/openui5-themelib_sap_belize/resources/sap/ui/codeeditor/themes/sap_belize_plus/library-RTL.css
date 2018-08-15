@@ -1,0 +1,50 @@
+/*!
+ * UI development toolkit for HTML5 (OpenUI5)
+ * (c) Copyright 2009-2018 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+/*!
+ * UI development toolkit for HTML5 (OpenUI5)
+ * (c) Copyright 2009-2018 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+/*!
+ * UI development toolkit for HTML5 (OpenUI5)
+ * (c) Copyright 2009-2018 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+/* =========================== */
+/* Global CSS for 'base' theme */
+/* =========================== */
+.sapCEd[data-sap-ui-syntaxhints='false'] .ace_gutter-cell {
+  background-image: none !important;
+}
+.sapCEd[data-sap-ui-syntaxhints='false'] .ace_tooltip {
+  display: none !important;
+}
+/*
+* Fixes an issue in the ace editor. Where focusing the textarea causes a scroll to the top.
+* Incident 1780370870
+*/
+.ace_text-input {
+  position: absolute !important;
+}
+/* ===================================== */
+/* Quick Theming                         */
+/* ===================================== */
+/*
+ UX COLOR SET
+*/
+/* PRIMARY COLORS */
+/* ACCENT COLORS */
+/* Semantic Background Colors */
+/* Semantic Border Colors */
+/* Semantic Foreground Elements */
+/* Semantic Text */
+/* Semantic Foreground Colors */
+/* ===================================== */
+/* Expert Theming                        */
+/* ===================================== */
+
+/* Inline theming parameters */
+#sap-ui-theme-themelib_sap_belize { background-image: url('data:text/plain;utf-8,%7B%7D'); }

@@ -1,0 +1,55 @@
+
+<mvc:View
+	controllerName="sap.ui.demo.basicTemplate.controller.App"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m">
+
+<App class="myAppDemoWT">
+    <pages>
+        <Page title ="{i18n>homePageTitle}">
+		       <headerContent>
+
+				    	<Button
+						  icon="sap-icon://hello-world"
+						  press="onOpenDialog"/>
+
+			   </headerContent>
+	                   <content>
+			   	            <IconTabBar
+		                     id="idIconTabBarNoIcons"
+		                     expanded="{device>/isNoPhone}"
+		                     class="sapUiResponsiveContentPadding">
+		                    <items>
+
+			                     <IconTabFilter
+				                   text="Title">
+				                   <mvc:XMLView viewName ="sap.ui.demo.basicTemplate.view.HelloPanel"/>
+			                     </IconTabFilter>
+
+			                     <IconTabFilter
+				                   text="Invoice">
+				                   <mvc:XMLView viewName="sap.ui.demo.basicTemplate.view.InvoiceList"/>
+			                     </IconTabFilter>
+
+			                    <IconTabFilter
+				                   text="Slider">
+								   <mvc:XMLView viewName="sap.ui.demo.basicTemplate.view.V"/>
+			                    </IconTabFilter>
+
+			                    <IconTabFilter
+				                  text="">
+			                   </IconTabFilter>
+
+		                    </items>
+
+	                     </IconTabBar>
+	                  
+			           
+                      
+			    </content>
+        </Page>
+      </pages>
+ </App>
+ 
+</mvc:View>

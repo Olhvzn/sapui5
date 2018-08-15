@@ -1,0 +1,18 @@
+<mvc:View
+	controllerName="sap.m.sample.ViewSettingsDialog.C"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<l:VerticalLayout
+		class="sapUiContentPadding"
+		width="100%">
+		<l:content>
+			<Button
+				text="Open View Settings Dialog"
+				press="handleOpenDialog" />
+			<Button
+					text="Open View Settings Dialog in Filter view"
+					press="handleOpenDialogFilter" />
+		</l:content>
+	</l:VerticalLayout>
+</mvc:View>

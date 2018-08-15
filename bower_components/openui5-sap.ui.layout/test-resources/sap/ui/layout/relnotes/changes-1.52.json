@@ -1,0 +1,168 @@
+{
+  "1.52.0": {
+    "date": "October 2017",
+    "notes": [
+      {
+        "id": "73aa89d49207de585613f3195974640b60f7edf9",
+        "type": "FEATURE",
+        "text": " Form: add paddings between rows in display mode",
+        "references": []
+      },
+      {
+        "id": "ab0b958a3b3ebfe573bf393a7c691b152f7dfc62",
+        "type": "FEATURE",
+        "text": " Form: visualize disply mode for Labels",
+        "references": []
+      },
+      {
+        "id": "4851b625eba0098e5c44869d1be15226673a70d1",
+        "type": "FEATURE",
+        "text": " sap.ui.layout.BlockLayout - Added BlockLayoutCellData class",
+        "references": []
+      },
+      {
+        "id": "6e50fcc0bab687b3d2676e2dcb08acb7bdf4358e",
+        "type": "FEATURE",
+        "text": " sap.ui.layout.Horizontal/VerticalLayout inner padding for standard CSS classes",
+        "references": []
+      },
+      {
+        "id": "a4274d35eb749eb57ddb303f392b4fef6c80cfa9",
+        "type": "FIX",
+        "text": " Form: don\u0027t close FormContainer if focus on Input field",
+        "references": []
+      },
+      {
+        "id": "248a51aa9ea83f771f5ba242a9e518e6e5e77196",
+        "type": "FIX",
+        "text": " FormContainer: render role\u003d\"form\" only if title exist",
+        "references": []
+      },
+      {
+        "id": "94935713437c6960c6c8da30b67bd2937d6e4a3a",
+        "type": "FIX",
+        "text": " sap.ui.fl Correctly mark change as being applied changeHandler for xml views",
+        "references": []
+      },
+      {
+        "id": "8febe2d62ac3ece8491aa26d3dba856222a0ddc0",
+        "type": "FIX",
+        "text": " sap.ui.layout.BlockLayout: BlockLayout is now rendered correctly.",
+        "references": []
+      },
+      {
+        "id": "85019cf039565292c30fb7b7356b7e85b52e606a",
+        "type": "FIX",
+        "text": " sap.ui.layout.BlockLayoutCellData: JSDoc is now fixed.",
+        "references": []
+      },
+      {
+        "id": "372a176aa7f1e8267572cec35045bc63e2652021",
+        "type": "FIX",
+        "text": " sap.ui.layout.DynamicSideContent: sideContentVisibility works correct with containerQuery now",
+        "references": []
+      },
+      {
+        "id": "734f90472386dc57ee08e6f54353678f0027c0a4",
+        "type": "FIX",
+        "text": " sap.ui.layout.Grid: Filter for DOM visibility added",
+        "references": []
+      },
+      {
+        "id": "5f91d86eb1f476132add1711eae3646e818a834b",
+        "type": "FIX",
+        "text": " sap.ui.layout.Splitter: Focus in HCB under IE is now correct",
+        "references": []
+      }
+    ]
+  },
+  "1.52.1": {
+    "date": "October 2017",
+    "notes": [
+      {
+        "id": "463c44bc312310cae7255663a1a84713cd762d3e",
+        "type": "FIX",
+        "text": " Form: Toolbar wrong aligned",
+        "references": []
+      },
+      {
+        "id": "d4884f766dfec221545bf65c7dd8ec2565ec8f30",
+        "type": "FIX",
+        "text": " Form: icons inside of content controls not shown",
+        "references": []
+      }
+    ]
+  },
+  "1.52.2": {
+    "date": "November 2017",
+    "notes": [
+      {
+        "id": "2271c3eda969d4e1fea457127cd82e92202c1798",
+        "type": "FIX",
+        "text": " SimpleForm: resize handler active after changing layout",
+        "references": []
+      },
+      {
+        "id": "a5fd5f7b699dc49ecdf3d2a2e91b32c490a73152",
+        "type": "FIX",
+        "text": " sap.ui.dt:added isVisible function to designtime and visible check",
+        "references": []
+      }
+    ]
+  },
+  "1.52.3": {
+    "date": "December 2017",
+    "notes": [
+      {
+        "id": "615bc794d6b7ce88b2d91a6c331a11eb87edc8be",
+        "type": "FIX",
+        "text": " Form: using ResponsiveLayout text too much padding",
+        "references": []
+      }
+    ]
+  },
+  "1.52.7": {
+    "date": "February 2018",
+    "notes": [
+      {
+        "id": "5e8261b616cb1cd09ff7fcefb921fde81ce081dd",
+        "type": "FIX",
+        "text": " sap.ui.layout: MoveSimpleForm and AddSimpleFormGroup ChangeHandler",
+        "references": []
+      }
+    ]
+  },
+  "1.52.12": {
+    "date": "May 2018",
+    "notes": [
+      {
+        "id": "5963abe34414d314e641b0337a597dbf10308c20",
+        "type": "FIX",
+        "text": " SimpleForm: Error if layout is set after content",
+        "references": []
+      }
+    ]
+  },
+  "1.52.13": {
+    "date": "May 2018",
+    "notes": [
+      {
+        "id": "6321559428d30ad09324bba276ec01480ecdf9f5",
+        "type": "FIX",
+        "text": "sap.ui.layout - Update of labels after undo of rename on SimpleForm",
+        "references": []
+      }
+    ]
+  },
+  "1.52.16": {
+    "date": "July 2018",
+    "notes": [
+      {
+        "id": "1164a31f5f8024026a7b87a63b6dc75622e9759b",
+        "type": "FIX",
+        "text": " sap.ui.layout.ResponsiveSplitter: Resize tooltips are now correct",
+        "references": []
+      }
+    ]
+  }
+}

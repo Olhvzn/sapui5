@@ -1,0 +1,30 @@
+{
+  "name": "openui5-themelib_sap_belize",
+  "description": "OpenUI5 Theme Library Belize",
+  "version": "1.56.5",
+  "license": "Apache-2.0",
+  "ignore": [],
+  "keywords": [
+    "openui5"
+  ],
+  "authors": [
+    "SAP SE <*@sap.com>"
+  ],
+  "homepage": "http://openui5.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SAP/openui5.git"
+  },
+  "dependencies": {
+    "openui5-sap.ui.core": "openui5/packaged-sap.ui.core#1.56.5"
+  },
+  "_release": "1.56.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.56.5",
+    "commit": "a161b32617af5567a15d401bda6c9b40e005c2bf"
+  },
+  "_source": "https://github.com/openui5/packaged-themelib_sap_belize.git",
+  "_target": "*",
+  "_originalSource": "openui5/packaged-themelib_sap_belize"
+}

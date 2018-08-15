@@ -1,0 +1,66 @@
+<mvc:View
+	controllerName="sap.m.sample.InputStates.C"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<l:VerticalLayout
+		class="sapUiContentPadding"
+		width="100%">
+		<l:content>
+
+			<Label text="Product not editable" labelFor="InputNoEdit"/>
+			<Input
+				id="InputNoEdit"
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				placeholder="Product..."
+				enabled="true"
+				editable="false"
+			/>
+
+			<Label text="Product not enabled" labelFor="InputDisabled"/>
+			<Input
+				id="InputDisabled"
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				placeholder="Product ..."
+				enabled="false"
+			/>
+
+			<Label text="Product editable" labelFor="InputEdit"/>
+			<Input
+				id="InputEdit"
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				placeholder="Enter Product..."
+				enabled="true"
+				editable="true"
+			/>
+
+			<Label text="Product with Value Help" labelFor="InputValueHelp"/>
+			<Input
+				id="InputValueHelp"
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				placeholder="Enter Product..."
+				enabled="true"
+				editable="true"
+				showValueHelp="true"
+				valueHelpRequest="handleValueHelp"
+			/>
+
+			<Label text="Product with Value Help Only" labelFor="productInputVHO"/>
+			<Input
+				id="productInputVHO"
+				class="sapUiSmallMarginBottom"
+				type="Text"
+				placeholder="Enter Product..."
+				enabled="true"
+				editable="true"
+				showValueHelp="true"
+				valueHelpOnly="true"
+				valueHelpRequest="handleValueHelp"
+			/>
+		</l:content>
+	</l:VerticalLayout>
+</mvc:View>

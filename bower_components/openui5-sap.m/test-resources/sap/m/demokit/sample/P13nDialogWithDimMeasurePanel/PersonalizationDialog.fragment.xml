@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <P13nDialog showReset="true" showResetEnabled="{path: '/ShowResetEnabled'}" ok="onOK" cancel="onCancel"
+                reset="onReset" class="sapUiSizeCompact">
+        <panels>
+            <P13nDimMeasurePanel chartTypeKey="{path: '/SelectedChartType'}"
+                                 changeDimMeasureItems="onChangeDimMeasureItems" changeChartType="onChangeChartType"
+                                 items="{path: '/DimMeasureCollection'}"
+                                 dimMeasureItems="{path: '/DimMeasureItems'}"
+                                 availableChartTypes="{path: '/ChartTypes'}">
+                <items>
+                    <P13nItem columnKey="{columnKey}" text="{text}" aggregationRole="{aggregationRole}"/>
+                </items>
+                <dimMeasureItems>
+                    <P13nDimMeasureItem columnKey="{columnKey}" index="{index}" visible="{visible}" role="{role}"/>
+                </dimMeasureItems>
+                <availableChartTypes>
+                    <core:Item key="{key}" text="{text}"/>
+                </availableChartTypes>
+            </P13nDimMeasurePanel>
+        </panels>
+    </P13nDialog>
+</core:FragmentDefinition>

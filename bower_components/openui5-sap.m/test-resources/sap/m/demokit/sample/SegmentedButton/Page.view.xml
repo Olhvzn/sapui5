@@ -1,0 +1,77 @@
+<mvc:View
+    controllerName="sap.m.sample.SegmentedButton.Page"
+	height="100%"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page
+		showHeader="false"
+		class="sapUiContentPadding" >
+		<subHeader>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<SegmentedButton selectedKey="kids">
+					<items>
+						<SegmentedButtonItem text="Kids" key="kids" />
+						<SegmentedButtonItem text="Adults" />
+						<SegmentedButtonItem text="Seniors" />
+					</items>
+				</SegmentedButton>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<VBox width="100%">
+				<SegmentedButton selectedKey="satellite" class="sapUiSmallMarginBottom">
+					<items>
+						<SegmentedButtonItem text="Map" />
+						<SegmentedButtonItem text="Satellite" key="satellite" />
+						<SegmentedButtonItem text="Hybrid" />
+					</items>
+				</SegmentedButton>
+				<SegmentedButton selectedKey="competitor" class="sapUiSmallMarginBottom">
+					<items>
+						<SegmentedButtonItem icon="sap-icon://taxi" />
+						<SegmentedButtonItem icon="sap-icon://lab" />
+						<SegmentedButtonItem icon="sap-icon://competitor" key="competitor" />
+					</items>
+				</SegmentedButton>
+				<SegmentedButton selectedKey="lab" class="sapUiSmallMarginBottom">
+					<items>
+						<SegmentedButtonItem icon="sap-icon://taxi" text="Taxi" />
+						<SegmentedButtonItem icon="sap-icon://lab" text="Lab" key="lab" />
+						<SegmentedButtonItem icon="sap-icon://competitor" text="Competitor" />
+					</items>
+				</SegmentedButton>
+				<SegmentedButton class="sapUiSmallMarginBottom">
+					<items>
+						<SegmentedButtonItem text="Selected" />
+						<SegmentedButtonItem text="Enabled" />
+						<SegmentedButtonItem text="Disabled" enabled="false"/>
+					</items>
+				</SegmentedButton>
+				<Label text="Fire selectionChange event"/>
+				<SegmentedButton id="item" selectionChange="onSelectionChange">
+					<items>
+						<SegmentedButtonItem text="One" />
+						<SegmentedButtonItem text="Two" />
+						<SegmentedButtonItem text="Three" />
+					</items>
+				</SegmentedButton>
+				<Text id="selectedItem"/>
+			</VBox>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<SegmentedButton selectedKey="small">
+					<items>
+						<SegmentedButtonItem text="Small" key="small" />
+						<SegmentedButtonItem text="Medium" />
+						<SegmentedButtonItem text="Large" />
+					</items>
+				</SegmentedButton>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

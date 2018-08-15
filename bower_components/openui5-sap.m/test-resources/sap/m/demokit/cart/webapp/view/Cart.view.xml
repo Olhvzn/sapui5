@@ -1,0 +1,165 @@
+<mvc:View
+	controllerName="sap.ui.demo.cart.controller.Cart"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page
+		id="page"
+		title="{cfg>/pageTitle}"
+		showNavButton="{cfg>/notInDelete}"
+		navButtonPress="onNavButtonPress"
+		showFooter="true" >
+		<landmarkInfo>
+			<PageAccessibleLandmarkInfo
+				rootRole="Region"
+				rootLabel="{i18n>Cart_rootLabel}"
+				contentRole="Main"
+				contentLabel="{i18n>Cart_contentLabel}"
+				footerRole="Region"
+				footerLabel="{i18n>Cart_footerLabel}"
+				headerRole="Region"
+				headerLabel="{i18n>Cart_headerLabel}"/>
+		</landmarkInfo>
+		<headerContent>
+			<Button
+				id="editButton"
+				icon="sap-icon://edit"
+				enabled="{parts: [
+					{path: 'cartProducts>/cartEntries'},
+					{path: 'cartProducts>/savedForLaterEntries'}
+				 ], formatter : '.formatter.hasItems'}"
+				visible="{cfg>/notInDelete}"
+				press="onEditOrDoneButtonPress"
+				tooltip="{i18n>cartEditButtonTooltip}"/>
+		</headerContent>
+		<footer>
+			<Toolbar>
+				<Text
+					id="totalPriceText"
+					text="{
+						path : 'cartProducts>/cartEntries',
+						formatter : '.formatter.totalPrice'
+					} EUR" />
+				<ToolbarSpacer/>
+				<Button
+					id="proceedButton"
+					type="Accept"
+					text="{i18n>cartProceedButtonText}"
+					enabled="{
+						path: 'cartProducts>/cartEntries',
+						formatter: '.formatter.hasItems'
+					}"
+					visible="{cfg>/notInDelete}"
+					press="onProceedButtonPress" />
+				<Button
+					id="doneButton"
+					text="{i18n>cartDoneButtonText}"
+					enabled="true"
+					visible="{cfg>/inDelete}"
+					press="onEditOrDoneButtonPress" />
+			</Toolbar>
+		</footer>
+		<content>
+			<List
+				id="entryList"
+				footerText="{
+					path : 'cartProducts>/savedForLaterEntries',
+					formatter : '.formatter.footerTextForCart'
+				}"
+				mode="{cfg>/listMode}"
+				delete="onCartEntriesDelete"
+				selectionChange="onEntryListSelect"
+				noDataText="{i18n>cartNoData}"
+				items="{
+					path : 'cartProducts>/cartEntries',
+					sorter : {
+						path : 'Name',
+						descending : false
+					}
+				}">
+				<items>
+					<ObjectListItem
+						intro="{cartProducts>Quantity} x"
+						type="{cfg>/listItemType}"
+						icon="{
+							path : 'cartProducts>PictureUrl',
+							formatter : '.formatter.pictureUrl'
+						}"
+						title="{cartProducts>Name}"
+						number="{
+							path : 'cartProducts>Price',
+							formatter : '.formatter.price'
+						}"
+						numberUnit="EUR"
+						press="onEntryListPress"
+						iconDensityAware="false" >
+						<attributes>
+							<ObjectAttribute
+								active="true"
+								press="onSaveForLater"
+								text="{i18n>cartSaveForLaterLinkText}" />
+						</attributes>
+						<firstStatus>
+							<ObjectStatus
+								text="{
+									path : 'cartProducts>Status',
+									formatter : '.formatter.statusText'
+								}"
+								state="{
+									path : 'cartProducts>Status',
+									formatter : '.formatter.statusState'
+								}" />
+						</firstStatus>
+					</ObjectListItem>
+				</items>
+			</List>
+			<List
+				id="saveForLaterList"
+				mode="{cfg>/listMode}"
+				showNoData="false"
+				delete="onSaveForLaterDelete"
+				selectionChange="onEntryListSelect"
+				items="{
+					path : 'cartProducts>/savedForLaterEntries',
+					sorter : {
+						path : 'Name',
+						descending : false
+					}
+				}">
+				<items>
+					<ObjectListItem
+						type="{cfg>/listItemType}"
+						icon="{
+							path : 'cartProducts>PictureUrl',
+							formatter : '.formatter.pictureUrl'
+						}"
+						title="{cartProducts>Name}"
+						number="{
+							path : 'cartProducts>Price',
+							formatter : '.formatter.price'
+						}"
+						numberUnit="EUR"
+						press="onEntryListPress"
+						iconDensityAware="false" >
+						<attributes>
+							<ObjectAttribute
+								active="true"
+								press="onAddBackToBasket"
+								text="{i18n>cartAddToCartLinkText}" />
+						</attributes>
+						<firstStatus>
+							<ObjectStatus
+								text="{
+									path : 'cartProducts>Status',
+									formatter : '.formatter.statusText'
+								}"
+								state="{
+									path : 'cartProducts>Status',
+									formatter : '.formatter.statusState'
+								}" />
+						</firstStatus>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+	</Page>
+</mvc:View>

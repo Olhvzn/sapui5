@@ -1,0 +1,32 @@
+<mvc:View
+	controllerName="sap.ui.demo.basicTemplate.controller.HelloPanel"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+ <Panel headerText ="{i18n>helloPanelTitle}">
+
+		            <content>
+
+                    <Button
+                      icon="sap-icon://globe"
+                      text="{i18n>openDialogButtonText}"
+                      press = "onOpenDialog"
+                      class="sapUiSmallMarginEnd"/>
+                    
+                        <Button 
+		                   text="{i18n>ShowHelloButtonText}"
+		                   press="onShowHello"
+						           class = "myCustomButton"/>
+
+                        <Input 
+                             value="{/recipient/name}"
+                             valueLiveUpdate="true"
+                             width="60%"/>
+
+                        <FormattedText
+                          htmlText="Hello {/recipient/name}"
+                          class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+                        
+                    </content>
+ </Panel>
+
+</mvc:View>

@@ -1,0 +1,6 @@
+{
+    "_sap_ui_ux3_FeedChunk_PersonPlaceholder": "url(\"../base/img/feed/person_placeholder_48.png\")",
+    "_sap_ui_ux3_Feeder_PersonPlaceholder": "url(\"../base/img/feed/person_placeholder_48.png\")",
+    "_sap_ui_ux3_Feed_ToolsIconUrl": "url(\"../sap_belize/img/feed/Action_Menu_regular.png\")",
+    "_sap_ui_ux3_Feed_ToolsIconHoverUrl": "url(\"../sap_belize/img/feed/Action_Menu_hover.png\")"
+}

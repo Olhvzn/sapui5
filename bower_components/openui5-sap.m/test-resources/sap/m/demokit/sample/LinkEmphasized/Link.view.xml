@@ -1,0 +1,70 @@
+<mvc:View
+	controllerName="sap.m.sample.LinkEmphasized.Link"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Table id="idProductsTable"
+		inset="false"
+		items="{
+			path: '/ProductCollection',
+			sorter: {
+				path: 'Name'
+			}
+		}">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="Products" level="H2"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Product" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Supplier" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true"
+				hAlign="End">
+				<Text text="Dimensions" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true"
+				hAlign="End">
+				<Text text="Weight" />
+			</Column>
+			<Column
+				hAlign="End"> <!-- not using "Begin" because the content is left-to-right text -->
+				<Text text="Price" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Link
+						text="{ProductId}"
+						emphasized="true"
+						href="{ProductPicUrl}" />
+					<Text
+						text="{SupplierName}" />
+					<Text
+						text="{Width} x {Depth} x {Height} {DimUnit}" />
+					<ObjectNumber
+						number="{WeightMeasure}"
+						unit="{WeightUnit}"/>
+					<ObjectNumber
+						number="{
+							parts:[{path:'Price'},{path:'CurrencyCode'}],
+							type: 'sap.ui.model.type.Currency',
+							formatOptions: {showMeasure: false}
+						}"
+						unit="{CurrencyCode}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</mvc:View>

@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormDisplay354wideDual"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Address"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<core:Title text="Office" />
+				<Label text="Full name of the contact" />
+				<Text id="nameText" text="{SupplierName}" />
+				<Label text="Street and number where the contact is located" />
+				<Text text="{Street} {HouseNumber}" />
+				<Label text="ZIP Code and City" />
+				<Text text="{ZIPCode} {City}" />
+				<Label text="Country where the contact is located" />
+				<Text id="countryText" text="{Country}" />
+				<core:Title text="Online" />
+				<Label text="Web page of the contact" />
+				<Text text="{Url}" />
+				<Label text="Twitter account of the contact" />
+				<Text text="{Twitter}" />
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>

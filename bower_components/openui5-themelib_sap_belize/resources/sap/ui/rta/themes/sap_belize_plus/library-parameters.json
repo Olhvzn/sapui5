@@ -1,0 +1,7 @@
+{
+    "_sap_ui_rta_Overlay_ActiveBG": "rgba(145, 200, 246, 0.1)",
+    "_sap_ui_rta_Overlay_BaseBG": "#3f5161",
+    "_sap_ui_rta_Overlay_Border": "#91c8f6",
+    "_sap_ui_rta_Overlay_HoverBG": "rgba(0, 0, 0, 0.10800000000000001)",
+    "_sap_ui_rta_Overlay_ActiveHoverBG": "rgba(145, 200, 246, 0.2)"
+}

@@ -1,0 +1,32 @@
+<mvc:View
+   controllerName="sap.ui.demo.basicTemplate.controller.V"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<l:VerticalLayout class="sapUiContentPadding">
+
+	<Link
+	   id ="myLink"
+	   href="http://stackoverflow.com/"
+       text="Press"
+       press = "onPressLink"
+       class="sapUiSmallMarginEnd"/>
+
+		<Slider value="30" width="90%" class="sapUiSmallMarginBottom" />
+		<Slider value="27" width="10em" class="sapUiSmallMarginBottom" />
+		<Slider value="40" width="15em" class="sapUiSmallMarginBottom" />
+		<Slider value="5" width="66%"
+			min="0" max="50" enabled="false" class="sapUiSmallMarginBottom" />
+		<Slider value="9" width="77%"
+			min="0" max="10" class="sapUiSmallMarginBottom" />
+	</l:VerticalLayout>
+
+    <VBox>
+		<CheckBox text="Option a" />
+		<CheckBox text="Option b" />
+		<CheckBox text="Option c" />
+		<CheckBox text="Option d" />
+		<CheckBox text="Option e" enabled="true" />
+	</VBox>
+
+</mvc:View>

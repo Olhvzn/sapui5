@@ -1,0 +1,147 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "sap.ui.demo.orderbrowser",
+		"type": "application",
+		"resources": "resources.json",
+		"i18n": "i18n/i18n.properties",
+		"title": "Order Browser",
+		"description": "Demo app using the master-detail pattern, allowing to browse through a list of orders",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/here/goes/your/serviceUrl/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.2masterdetail",
+			"version": "1.38.3"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "sap.ui.demo.orderbrowser.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.38.0",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.38.0"
+				},
+				"sap.m": {
+					"minVersion": "1.38.0"
+				},
+				"sap.ui.layout": {
+					"minVersion": "1.38.0"
+				},
+				"sap.f": {
+					"minVersion": "1.38.0"
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "sap.ui.demo.orderbrowser.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.f.routing.Router",
+				"viewType": "XML",
+				"viewPath": "sap.ui.demo.orderbrowser.view",
+				"controlId": "app",
+				"controlAggregation": "midColumnPages",
+				"bypassed": {
+					"target": "notFound"
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "master",
+					"target": "master"
+				},
+				{
+					"pattern": "Orders/{objectId}/:?query:",
+					"name": "object",
+					"target": [
+						"master",
+						"object"
+					]
+				}
+			],
+			"targets": {
+				"master": {
+					"viewName": "Master",
+					"viewLevel": 1,
+					"viewId": "master",
+					"controlAggregation": "beginColumnPages"
+				},
+				"object": {
+					"viewName": "Detail",
+					"viewId": "detail",
+					"viewLevel": 2
+				},
+				"detailObjectNotFound": {
+					"viewName": "DetailObjectNotFound",
+					"viewId": "detailObjectNotFound"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound",
+					"controlAggregation": "beginColumnPages"
+				},
+				"shipping": {
+					"viewName": "Shipping",
+					"parent": "object",
+					"controlId": "iconTabFilterShipping",
+					"controlAggregation": "content"
+				},
+				"processor": {
+					"viewName": "Processor",
+					"parent": "object",
+					"controlId": "iconTabFilterProcessor",
+					"controlAggregation": "content"
+				}
+			}
+		}
+	}
+}

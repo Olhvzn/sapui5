@@ -1,0 +1,94 @@
+/*!
+ * UI development toolkit for HTML5 (OpenUI5)
+ * (c) Copyright 2009-2018 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+/*!
+ * UI development toolkit for HTML5 (OpenUI5)
+ * (c) Copyright 2009-2018 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+/*!
+ * UI development toolkit for HTML5 (OpenUI5)
+ * (c) Copyright 2009-2018 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+/* =========================== */
+/* Global CSS for 'base' theme */
+/* =========================== */
+/* This CSS shares it rules with all other CSS of this library */
+/* ============================================= */
+/* CSS for control sap.ui.dev/TaskCircle.control */
+/* ============================================= */
+.sapUiTaskCircle {
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #000000;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  background-color: #3f5161;
+  color: #fafafa;
+}
+/* ============================================= */
+/* CSS for control sap.ui.suite/VerticalProgressIndicator.control */
+/* ============================================= */
+.sapUiVerticalProgressOuterContainer {
+  border: 2px solid #000000;
+  width: 31px;
+  height: 58px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  background-color: #808080;
+}
+.sapUiVerticalProgressInnerContainer {
+  position: relative;
+  background-color: #a9a9a9;
+}
+/* ===================================== */
+/* Quick Theming                         */
+/* ===================================== */
+/*
+ UX COLOR SET
+*/
+/* PRIMARY COLORS */
+/* ACCENT COLORS */
+/* Semantic Background Colors */
+/* Semantic Border Colors */
+/* Semantic Foreground Elements */
+/* Semantic Text */
+/* Semantic Foreground Colors */
+/* ===================================== */
+/* Expert Theming                        */
+/* ===================================== */
+/* This CSS inherits rules from default/shared.css */
+/* ======================================== */
+/* CSS for control sap.ui.suite/TaskCircle  */
+/* Belize theme                             */
+/* ======================================== */
+.sapUiTaskCircle {
+  border: 2px solid #3f5161;
+}
+.sapUiTaskCircleColorRed {
+  background-color: #ff8888;
+  color: #2f3c48;
+}
+.sapUiTaskCircleColorYellow {
+  background-color: #fabd64;
+  color: #2f3c48;
+}
+.sapUiTaskCircleColorGreen {
+  background-color: #abe2ab;
+  color: #2f3c48;
+}
+.sapUiTaskCircleColorGray {
+  background-color: #4d6377;
+  color: #fafafa;
+}
+/* ======================================================= */
+/* CSS for control sap.ui.suite/VerticalProgressIndicator  */
+/* Belize theme                                            */
+/* ======================================================= */
+.sapUiVerticalProgressOuterContainer {
+  border: 2px solid #3f5161;
+}
+
+/* Inline theming parameters */
+#sap-ui-theme-themelib_sap_belize { background-image: url('data:text/plain;utf-8,%7B%7D'); }
