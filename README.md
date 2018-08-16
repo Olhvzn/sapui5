@@ -1,10 +1,3 @@
-# openui5-basic-template-app
-This is a basic app template which you can use as a starting point to build OpenUI5 apps.
-
-## Getting started
-
-1.Install node.js (get it from [nodejs.org](http://nodejs.org/)).
-  * If working behind a proxy, you need to configure it properly (HTTP_PROXY / HTTPS_PROXY / NO_PROXY environment variables)
 
 2.Install grunt-cli and bower globally
 
