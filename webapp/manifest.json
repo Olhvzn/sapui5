@@ -101,10 +101,14 @@
 			  "detail": {
 				"viewId": "detail",
 				"viewName": "Detail"
+			  },
+			  "backdetail": {
+				"viewId": "backdetail",
+				"viewName": "Invoice"
 			  }
 			}
 		  },
-		  
+
 		"resources": {
 			"css": [{
 				"uri": "css/style.css"

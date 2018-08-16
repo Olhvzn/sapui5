@@ -1,11 +1,18 @@
 <mvc:View
+    controllerName="sap.ui.demo.basicTemplate.controller.Detail"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
-    
+
 	<Page
 		title="{i18n>detailPageTitle}">
 		<ObjectHeader
 			title="Invoice"/>
+        <Button 
+          icon="sap-icon://arrow-left"
+          text="{i18n>BackToInvoice}"
+          class="sapUiSmallMarginEnd"
+          press="onBackToInvoice"/>
+
 	</Page>
 
 </mvc:View>
