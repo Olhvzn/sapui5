@@ -10,11 +10,9 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("sap.ui.demo.basicTemplate.controller.V", {
-        
-        onPressLink: function(){
-            
-            console.log("ag");
-        }
+
+	
+	   
 		
-	});
-});
+})
+})

@@ -31,4 +31,10 @@
 		<CheckBox text="Option e" enabled="true" />
 	</VBox>
 
+		<Button
+         text="{i18n>NavButton}"
+         press = "onPress"
+         class="sapUiSmallMarginEnd"/>
+
+
 </mvc:View>

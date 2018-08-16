@@ -56,9 +56,11 @@ sap.ui.define([
 		metadata : {
 			manifest : "json"	
 		},
-		init : function () {
+
+		init: function () {
 			// call the init function of the parent
 			UIComponent.prototype.init.apply(this, arguments);
+			this.getRouter().initialize();
 			// set data model
 			var oData = {
 				recipient : {
@@ -69,6 +71,7 @@ sap.ui.define([
 			this.setModel(oModel);
 			// set dialog
 			this.helloDialog = new HelloDialog();
+			
 		}
 	});
 });

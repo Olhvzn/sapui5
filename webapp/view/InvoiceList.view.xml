@@ -36,7 +36,10 @@
 			     }
 	      }"
 		     numberUnit="{view>/currency}"
-         numberState="{=${invoice>ExtendedPrice} > 9 ? 'Error': 'Success'}">
+         numberState="{=${invoice>ExtendedPrice} > 9 ? 'Error': 'Success'}"
+         type="Navigation"
+			   press="onPresss">
+        
          
           <firstStatus>
 
