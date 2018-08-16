@@ -8,8 +8,7 @@ npm install grunt-cli bower -g
 Clone the repository and navigate into it
 
 ```sh
-git clone https://github.com/SAP/openui5-basic-template-app.git
-cd openui5-basic-template-app
+https://github.com/Olhvzn/sapui5.git
 ```
 
 Install all npm dependencies
